@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="ASCII"?>
+
+<!-- oks-data version 2.2 -->
+
+
+<!DOCTYPE oks-data [
+  <!ELEMENT oks-data (info, (include)?, (comments)?, (obj)+)>
+  <!ELEMENT info EMPTY>
+  <!ATTLIST info
+      name CDATA #IMPLIED
+      type CDATA #IMPLIED
+      num-of-items CDATA #REQUIRED
+      oks-format CDATA #FIXED "data"
+      oks-version CDATA #REQUIRED
+      created-by CDATA #IMPLIED
+      created-on CDATA #IMPLIED
+      creation-time CDATA #IMPLIED
+      last-modified-by CDATA #IMPLIED
+      last-modified-on CDATA #IMPLIED
+      last-modification-time CDATA #IMPLIED
+  >
+  <!ELEMENT include (file)*>
+  <!ELEMENT file EMPTY>
+  <!ATTLIST file
+      path CDATA #REQUIRED
+  >
+  <!ELEMENT comments (comment)*>
+  <!ELEMENT comment EMPTY>
+  <!ATTLIST comment
+      creation-time CDATA #REQUIRED
+      created-by CDATA #REQUIRED
+      created-on CDATA #REQUIRED
+      author CDATA #REQUIRED
+      text CDATA #REQUIRED
+  >
+  <!ELEMENT obj (attr | rel)*>
+  <!ATTLIST obj
+      class CDATA #REQUIRED
+      id CDATA #REQUIRED
+  >
+  <!ELEMENT attr (data)*>
+  <!ATTLIST attr
+      name CDATA #REQUIRED
+      type (bool|s8|u8|s16|u16|s32|u32|s64|u64|float|double|date|time|string|uid|enum|class|-) "-"
+      val CDATA ""
+  >
+  <!ELEMENT data EMPTY>
+  <!ATTLIST data
+      val CDATA #REQUIRED
+  >
+  <!ELEMENT rel (ref)*>
+  <!ATTLIST rel
+      name CDATA #REQUIRED
+      class CDATA ""
+      id CDATA ""
+  >
+  <!ELEMENT ref EMPTY>
+  <!ATTLIST ref
+      class CDATA #REQUIRED
+      id CDATA #REQUIRED
+  >
+]>
+
+<oks-data>
+
+<info name="" type="" num-of-items="26" oks-format="data" oks-version="862f2957270" created-by="gjc" created-on="thinkpad" creation-time="20231207T110859" last-modified-by="maroda" last-modified-on="np04-srv-015.cern.ch" last-modification-time="20250702T075856"/>
+
+<include>
+ <file path="schema/confmodel/dunedaq.schema.xml"/>
+ <file path="defaults/fsm.data.xml"/>
+ <file path="hw/hosts.data.xml"/>
+</include>
+
+<comments>
+</comments>
+
+
+<obj class="ConnectionService" id="local-connection-server">
+ <attr name="application_name" type="string" val="echo"/>
+ <attr name="commandline_parameters" type="string">
+  <data val="Process PID $$;"/>
+  <data val="trap &apos;pkill -QUIT -P $$&apos; EXIT;"/>
+  <data val="setsid gunicorn -b 0.0.0.0:${CONNECTION_PORT} --workers=1 --worker-class=gthread --threads=2 --timeout 5000000000 --log-level=info connectivityserver.connectionflask:app"/>
+ </attr>
+ <attr name="threads" type="u16" val="1"/>
+ <rel name="runs_on" class="VirtualHost" id="vlocalhost"/>
+ <rel name="exposes_service">
+  <ref class="Service" id="local-connectivity-service"/>
+ </rel>
+ <rel name="opmon_conf" class="OpMonConf" id="slow-all-monitoring"/>
+</obj>
+
+<obj class="OpMonURI" id="local-opmon-uri">
+ <attr name="path" type="string" val="./info.json"/>
+ <attr name="type" type="enum" val="file"/>
+</obj>
+
+<obj class="ConnectivityService" id="local-connectivity-service-config">
+ <attr name="interval_ms" type="u32" val="2000"/>
+ <attr name="host" type="string" val="localhost"/>
+ <rel name="service" class="Service" id="local-connectivity-service"/>
+</obj>
+
+<obj class="OpMonConf" id="ctb-all-monitoring">
+ <attr name="level" type="u32" val="4294967295"/>
+ <attr name="interval_s" type="u32" val="1"/>
+</obj>
+
+<obj class="OpMonConf" id="fast-all-monitoring">
+ <attr name="level" type="u32" val="4294967295"/>
+ <attr name="interval_s" type="u32" val="2"/>
+</obj>
+
+<obj class="OpMonConf" id="slow-all-monitoring">
+ <attr name="level" type="u32" val="4294967295"/>
+ <attr name="interval_s" type="u32" val="10"/>
+</obj>
+
+<obj class="RCApplication" id="root-controller">
+ <attr name="application_name" type="string" val="drunc-controller"/>
+ <rel name="runs_on" class="VirtualHost" id="vh-argoncube-054"/>
+ <rel name="exposes_service">
+  <ref class="Service" id="rc-root-controller_control"/>
+ </rel>
+ <rel name="opmon_conf" class="OpMonConf" id="slow-all-monitoring"/>
+ <rel name="fsm" class="FSMconfiguration" id="fsm-ehn1"/>
+</obj>
+
+<obj class="Service" id="daqapp_control">
+ <attr name="protocol" type="string" val="rest"/>
+ <attr name="port" type="u16" val="0"/>
+</obj>
+
+<obj class="Service" id="local-connectivity-service">
+ <attr name="protocol" type="string" val="http"/>
+ <attr name="port" type="u16" val="30005"/>
+</obj>
+
+<obj class="Service" id="pds-controller_control">
+ <attr name="protocol" type="string" val="grpc"/>
+ <attr name="port" type="u16" val="0"/>
+</obj>
+
+<obj class="Service" id="rccontroller_control">
+ <attr name="protocol" type="string" val="grpc"/>
+ <attr name="port" type="u16" val="0"/>
+</obj>
+
+<obj class="Service" id="root-controller_control">
+ <attr name="protocol" type="string" val="grpc"/>
+ <attr name="port" type="u16" val="0"/>
+</obj>
+
+<obj class="Service" id="rc-root-controller_control">
+ <attr name="protocol" type="string" val="grpc"/>
+ <attr name="port" type="u16" val="30006"/>
+</obj>
+
+<obj class="Variable" id="zmq-threads">
+ <attr name="description" type="string" val="number of ZMQ threads"/>
+ <attr name="name" type="string" val="IPM_ZMQ_IO_THREADS"/>
+ <attr name="value" type="string" val="2"/>
+</obj>
+
+<obj class="Variable" id="local-env-ers-debug-level">
+ <attr name="name" type="string" val="DUNEDAQ_ERS_DEBUG_LEVEL"/>
+ <attr name="value" type="string" val="-1"/>
+</obj>
+
+<obj class="Variable" id="local-env-ers-error">
+ <attr name="name" type="string" val="DUNEDAQ_ERS_ERROR"/>
+ <attr name="value" type="string" val="erstrace,throttle,lstdout"/>
+</obj>
+
+<obj class="Variable" id="local-env-ers-fatal">
+ <attr name="name" type="string" val="DUNEDAQ_ERS_FATAL"/>
+ <attr name="value" type="string" val="erstrace,lstdout"/>
+</obj>
+
+<obj class="Variable" id="local-env-ers-info">
+ <attr name="name" type="string" val="DUNEDAQ_ERS_INFO"/>
+ <attr name="value" type="string" val="erstrace,throttle,lstdout"/>
+</obj>
+
+<obj class="Variable" id="local-env-ers-verb">
+ <attr name="name" type="string" val="DUNEDAQ_ERS_VERBOSITY_LEVEL"/>
+ <attr name="value" type="string" val="1"/>
+</obj>
+
+<obj class="Variable" id="local-env-ers-warning">
+ <attr name="name" type="string" val="DUNEDAQ_ERS_WARNING"/>
+ <attr name="value" type="string" val="erstrace,throttle,lstdout"/>
+</obj>
+
+<obj class="Variable" id="local-env-connectivity-port">
+ <attr name="name" type="string" val="CONNECTION_PORT"/>
+ <attr name="value" type="string" val="30005"/>
+</obj>
+
+<obj class="VariableSet" id="local-variables">
+ <rel name="contains">
+  <ref class="Variable" id="local-env-ers-error"/>
+  <ref class="Variable" id="local-env-ers-fatal"/>
+  <ref class="Variable" id="local-env-ers-info"/>
+  <ref class="Variable" id="local-env-ers-verb"/>
+  <ref class="Variable" id="local-env-ers-warning"/>
+  <ref class="Variable" id="local-env-ers-debug-level"/>
+  <ref class="Variable" id="local-env-connectivity-port"/>
+ </rel>
+</obj>
+
+</oks-data>

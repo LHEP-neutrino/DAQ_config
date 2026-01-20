@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="ASCII"?>
+
+<!-- oks-data version 2.2 -->
+
+
+<!DOCTYPE oks-data [
+  <!ELEMENT oks-data (info, (include)?, (comments)?, (obj)+)>
+  <!ELEMENT info EMPTY>
+  <!ATTLIST info
+      name CDATA #IMPLIED
+      type CDATA #IMPLIED
+      num-of-items CDATA #REQUIRED
+      oks-format CDATA #FIXED "data"
+      oks-version CDATA #REQUIRED
+      created-by CDATA #IMPLIED
+      created-on CDATA #IMPLIED
+      creation-time CDATA #IMPLIED
+      last-modified-by CDATA #IMPLIED
+      last-modified-on CDATA #IMPLIED
+      last-modification-time CDATA #IMPLIED
+  >
+  <!ELEMENT include (file)*>
+  <!ELEMENT file EMPTY>
+  <!ATTLIST file
+      path CDATA #REQUIRED
+  >
+  <!ELEMENT comments (comment)*>
+  <!ELEMENT comment EMPTY>
+  <!ATTLIST comment
+      creation-time CDATA #REQUIRED
+      created-by CDATA #REQUIRED
+      created-on CDATA #REQUIRED
+      author CDATA #REQUIRED
+      text CDATA #REQUIRED
+  >
+  <!ELEMENT obj (attr | rel)*>
+  <!ATTLIST obj
+      class CDATA #REQUIRED
+      id CDATA #REQUIRED
+  >
+  <!ELEMENT attr (data)*>
+  <!ATTLIST attr
+      name CDATA #REQUIRED
+      type (bool|s8|u8|s16|u16|s32|u32|s64|u64|float|double|date|time|string|uid|enum|class|-) "-"
+      val CDATA ""
+  >
+  <!ELEMENT data EMPTY>
+  <!ATTLIST data
+      val CDATA #REQUIRED
+  >
+  <!ELEMENT rel (ref)*>
+  <!ATTLIST rel
+      name CDATA #REQUIRED
+      class CDATA ""
+      id CDATA ""
+  >
+  <!ELEMENT ref EMPTY>
+  <!ATTLIST ref
+      class CDATA #REQUIRED
+      id CDATA #REQUIRED
+  >
+]>
+
+<oks-data>
+
+<info name="" type="" num-of-items="27" oks-format="data" oks-version="862f2957270" created-by="glehmann" created-on="np04-srv-024.cern.ch" creation-time="20241013T161605" last-modified-by="maroda" last-modified-on="np04-srv-015.cern.ch" last-modification-time="20250917T131206"/>
+
+<include>
+ <file path="schema/confmodel/dunedaq.schema.xml"/>
+ <file path="schema/appmodel/application.schema.xml"/>
+ <file path="schema/appmodel/fdmodules.schema.xml"/>
+ <file path="defaults/wiecconfs.data.xml"/>
+</include>
+
+<comments>
+ <comment creation-time="20250915T102353" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add Network interfaces"/>
+ <comment creation-time="20250915T102516" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="right values"/>
+ <comment creation-time="20250915T102532" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="correction"/>
+ <comment creation-time="20250915T102608" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="ok NI"/>
+ <comment creation-time="20250915T102935" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add goei id and det stream"/>
+ <comment creation-time="20250916T102434" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add sender"/>
+ <comment creation-time="20250917T131206" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="change slot"/>
+</comments>
+
+
+<obj class="DetectorStream" id="DetStream-06">
+ <attr name="source_id" type="u32" val="1"/>
+ <rel name="geo_id" class="GeoId" id="geoid-np02-pds106-s00"/>
+</obj>
+
+<obj class="DetectorStream" id="np02-pds106-s00-sid720">
+ <attr name="source_id" type="u32" val="720"/>
+ <rel name="geo_id" class="GeoId" id="np02-pds106-s00"/>
+</obj>
+
+<obj class="DetectorStream" id="np02-pds106-s01-sid721">
+ <attr name="source_id" type="u32" val="721"/>
+ <rel name="geo_id" class="GeoId" id="np02-pds106-s01"/>
+</obj>
+
+<obj class="DetectorStream" id="np02-pds106-s02-sid722">
+ <attr name="source_id" type="u32" val="722"/>
+ <rel name="geo_id" class="GeoId" id="np02-pds106-s02"/>
+</obj>
+
+<obj class="DetectorStream" id="np02-pds106-s03-sid723">
+ <attr name="source_id" type="u32" val="723"/>
+ <rel name="geo_id" class="GeoId" id="np02-pds106-s03"/>
+</obj>
+
+<obj class="DetectorStream" id="np02-pds107-s00-sid700">
+ <attr name="source_id" type="u32" val="700"/>
+ <rel name="geo_id" class="GeoId" id="np02-pds107-s00"/>
+</obj>
+
+<obj class="DetectorStream" id="np02-pds110-s00-sid710">
+ <attr name="source_id" type="u32" val="710"/>
+ <rel name="geo_id" class="GeoId" id="np02-pds110-s00"/>
+</obj>
+
+<obj class="FelixDataSender" id="fds-np02-pds-06">
+ <attr name="protocol" type="enum" val="half"/>
+ <attr name="control_host" type="string" val="10.73.137.106"/>
+ <rel name="streams">
+  <ref class="DetectorStream" id="DetStream-06"/>
+ </rel>
+</obj>
+
+<obj class="FelixDataSender" id="fds-np02-pds106-s00">
+ <attr name="control_host" type="string" val="10.73.137.106"/>
+ <rel name="streams">
+  <ref class="DetectorStream" id="np02-pds106-s00-sid720"/>
+ </rel>
+</obj>
+
+<obj class="FelixDataSender" id="fds-np02-pds106-s01">
+ <attr name="link" type="u8" val="1"/>
+ <attr name="control_host" type="string" val="10.73.137.106"/>
+ <rel name="streams">
+  <ref class="DetectorStream" id="np02-pds106-s01-sid721"/>
+ </rel>
+</obj>
+
+<obj class="FelixDataSender" id="fds-np02-pds106-s02">
+ <attr name="link" type="u8" val="2"/>
+ <attr name="control_host" type="string" val="10.73.137.106"/>
+ <rel name="streams">
+  <ref class="DetectorStream" id="np02-pds106-s02-sid722"/>
+ </rel>
+</obj>
+
+<obj class="FelixDataSender" id="fds-np02-pds106-s03">
+ <attr name="link" type="u8" val="3"/>
+ <attr name="control_host" type="string" val="10.73.137.106"/>
+ <rel name="streams">
+  <ref class="DetectorStream" id="np02-pds106-s03-sid723"/>
+ </rel>
+</obj>
+
+<obj class="FelixDataSender" id="fds-np02-pds107-s00">
+ <attr name="protocol" type="enum" val="half"/>
+ <attr name="control_host" type="string" val="10.73.137.107"/>
+ <rel name="streams">
+  <ref class="DetectorStream" id="np02-pds107-s00-sid700"/>
+ </rel>
+</obj>
+
+<obj class="FelixDataSender" id="fds-np02-pds110-s00">
+ <attr name="protocol" type="enum" val="half"/>
+ <attr name="link" type="u8" val="2"/>
+ <attr name="control_host" type="string" val="10.73.137.110"/>
+ <rel name="streams">
+  <ref class="DetectorStream" id="np02-pds110-s00-sid710"/>
+ </rel>
+</obj>
+
+<obj class="GeoId" id="geoid-np02-pds106-s00">
+ <attr name="detector_id" type="u32" val="2"/>
+ <attr name="crate_id" type="u32" val="1"/>
+ <attr name="slot_id" type="u32" val="6"/>
+</obj>
+
+<obj class="GeoId" id="np02-pds106-s00">
+ <attr name="detector_id" type="u32" val="8"/>
+ <attr name="crate_id" type="u32" val="1"/>
+ <attr name="slot_id" type="u32" val="6"/>
+</obj>
+
+<obj class="GeoId" id="np02-pds106-s01">
+ <attr name="detector_id" type="u32" val="8"/>
+ <attr name="crate_id" type="u32" val="1"/>
+ <attr name="slot_id" type="u32" val="6"/>
+ <attr name="stream_id" type="u32" val="1"/>
+</obj>
+
+<obj class="GeoId" id="np02-pds106-s02">
+ <attr name="detector_id" type="u32" val="8"/>
+ <attr name="crate_id" type="u32" val="1"/>
+ <attr name="slot_id" type="u32" val="6"/>
+ <attr name="stream_id" type="u32" val="2"/>
+</obj>
+
+<obj class="GeoId" id="np02-pds106-s03">
+ <attr name="detector_id" type="u32" val="8"/>
+ <attr name="crate_id" type="u32" val="1"/>
+ <attr name="slot_id" type="u32" val="6"/>
+ <attr name="stream_id" type="u32" val="3"/>
+</obj>
+
+<obj class="GeoId" id="np02-pds107-s00">
+ <attr name="detector_id" type="u32" val="9"/>
+ <attr name="crate_id" type="u32" val="1"/>
+ <attr name="slot_id" type="u32" val="7"/>
+</obj>
+
+<obj class="GeoId" id="np02-pds107-s01">
+ <attr name="detector_id" type="u32" val="9"/>
+ <attr name="crate_id" type="u32" val="1"/>
+ <attr name="slot_id" type="u32" val="7"/>
+ <attr name="stream_id" type="u32" val="1"/>
+</obj>
+
+<obj class="GeoId" id="np02-pds110-s00">
+ <attr name="detector_id" type="u32" val="9"/>
+ <attr name="crate_id" type="u32" val="2"/>
+ <attr name="slot_id" type="u32" val="10"/>
+</obj>
+
+</oks-data>

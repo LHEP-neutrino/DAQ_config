@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ASCII"?>
+
+<!-- oks-data version 2.2 -->
+
+
+<!DOCTYPE oks-data [
+  <!ELEMENT oks-data (info, (include)?, (comments)?, (obj)+)>
+  <!ELEMENT info EMPTY>
+  <!ATTLIST info
+      name CDATA #IMPLIED
+      type CDATA #IMPLIED
+      num-of-items CDATA #REQUIRED
+      oks-format CDATA #FIXED "data"
+      oks-version CDATA #REQUIRED
+      created-by CDATA #IMPLIED
+      created-on CDATA #IMPLIED
+      creation-time CDATA #IMPLIED
+      last-modified-by CDATA #IMPLIED
+      last-modified-on CDATA #IMPLIED
+      last-modification-time CDATA #IMPLIED
+  >
+  <!ELEMENT include (file)*>
+  <!ELEMENT file EMPTY>
+  <!ATTLIST file
+      path CDATA #REQUIRED
+  >
+  <!ELEMENT comments (comment)*>
+  <!ELEMENT comment EMPTY>
+  <!ATTLIST comment
+      creation-time CDATA #REQUIRED
+      created-by CDATA #REQUIRED
+      created-on CDATA #REQUIRED
+      author CDATA #REQUIRED
+      text CDATA #REQUIRED
+  >
+  <!ELEMENT obj (attr | rel)*>
+  <!ATTLIST obj
+      class CDATA #REQUIRED
+      id CDATA #REQUIRED
+  >
+  <!ELEMENT attr (data)*>
+  <!ATTLIST attr
+      name CDATA #REQUIRED
+      type (bool|s8|u8|s16|u16|s32|u32|s64|u64|float|double|date|time|string|uid|enum|class|-) "-"
+      val CDATA ""
+  >
+  <!ELEMENT data EMPTY>
+  <!ATTLIST data
+      val CDATA #REQUIRED
+  >
+  <!ELEMENT rel (ref)*>
+  <!ATTLIST rel
+      name CDATA #REQUIRED
+      class CDATA ""
+      id CDATA ""
+  >
+  <!ELEMENT ref EMPTY>
+  <!ATTLIST ref
+      class CDATA #REQUIRED
+      id CDATA #REQUIRED
+  >
+]>
+
+<oks-data>
+
+<info name="" type="" num-of-items="3" oks-format="data" oks-version="862f2957270" created-by="glehmann" created-on="np04-srv-024.cern.ch" creation-time="20241013T161605" last-modified-by="maroda" last-modified-on="np04-srv-015.cern.ch" last-modification-time="20250916T103617"/>
+
+<include>
+ <file path="schema/confmodel/dunedaq.schema.xml"/>
+ <file path="schema/appmodel/application.schema.xml"/>
+ <file path="schema/appmodel/fdmodules.schema.xml"/>
+ <file path="hw/senders/np02-pds-det-senders.data.xml"/>
+ <file path="hw/receivers/np04-srv-026.data.xml"/>
+ <file path="hw/receivers/np04-srv-030.data.xml"/>
+ <file path="hw/receivers/np02-srv-001.data.xml"/>
+ <file path="hw/receivers/np02-srv-002.data.xml"/>
+</include>
+
+<comments>
+ <comment creation-time="20241013T165338" created-by="glehmann" created-on="np04-srv-024.cern.ch" author="glehmann" text=" "/>
+ <comment creation-time="20241013T172550" created-by="glehmann" created-on="np04-srv-024.cern.ch" author="glehmann" text=" "/>
+ <comment creation-time="20241023T144356" created-by="glehmann" created-on="np04-srv-024.cern.ch" author="glehmann" text="added pds example"/>
+ <comment creation-time="20241029T132335" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="np04 pds connection changed to include senders"/>
+ <comment creation-time="20241029T133623" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="Deleted ond streams group"/>
+ <comment creation-time="20241029T151602" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="fix felix"/>
+ <comment creation-time="20241121T113040" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="set controller hosts"/>
+ <comment creation-time="20241205T134913" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="Added ssp calibration module config"/>
+ <comment creation-time="20250121T155252" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Create GeoIDS for np02 coldboxes"/>
+ <comment creation-time="20250121T161225" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Possibly all the hardware for NP02 pds coldbos is set"/>
+ <comment creation-time="20250121T171320" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Configure the flx interface from old configurations"/>
+ <comment creation-time="20250121T173535" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="getting rid of NP04 objects in hardware settings"/>
+ <comment creation-time="20250131T102546" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="created GeoIDs"/>
+ <comment creation-time="20250131T103900" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Adding DetStreams"/>
+ <comment creation-time="20250131T105246" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Addinf FDS"/>
+ <comment creation-time="20250131T110030" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Added grouping of senders for PDS"/>
+ <comment creation-time="20250131T110851" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Creating first det2Daq connection"/>
+ <comment creation-time="20250207T100732" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="testing full stream mode"/>
+ <comment creation-time="20250210T100339" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="set selftrigger"/>
+ <comment creation-time="20250508T160316" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="update Det Stream names"/>
+ <comment creation-time="20250701T121423" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Draft of Det2Daq connection for 2 felix"/>
+ <comment creation-time="20250701T131624" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Change SLR"/>
+ <comment creation-time="20250701T131747" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="correct tpg settings"/>
+ <comment creation-time="20250701T133556" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="set the senders"/>
+ <comment creation-time="20250701T133641" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="updates the sender AND"/>
+ <comment creation-time="20250701T153104" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Remove pointless links"/>
+ <comment creation-time="20250701T154147" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Remove duplications"/>
+ <comment creation-time="20250701T161340" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Duplicate receivers"/>
+ <comment creation-time="20250722T122456" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Adding connections for pmts"/>
+ <comment creation-time="20250723T115039" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add a new felix interface"/>
+ <comment creation-time="20250723T115131" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add sender"/>
+ <comment creation-time="20250723T115438" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="remove redundancy"/>
+ <comment creation-time="20250723T121320" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Reorganise things"/>
+ <comment creation-time="20250723T124659" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Delete PMT connection"/>
+ <comment creation-time="20250916T102012" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Adding connection"/>
+</comments>
+
+
+<obj class="FelixDetectorToDaqConnection" id="np02-pds-cathode-connections">
+ <rel name="felix_receiver" class="FelixInterface" id="flx-if-np02-srv030-slr0"/>
+ <rel name="felix_senders">
+  <ref class="FelixDataSender" id="fds-np02-pds106-s00"/>
+  <ref class="FelixDataSender" id="fds-np02-pds106-s01"/>
+  <ref class="FelixDataSender" id="fds-np02-pds106-s02"/>
+  <ref class="FelixDataSender" id="fds-np02-pds106-s03"/>
+ </rel>
+</obj>
+
+<obj class="FelixDetectorToDaqConnection" id="np02-pds-membrane-connections">
+ <rel name="felix_receiver" class="FelixInterface" id=" flx-if-np02-srv026-slr0"/>
+ <rel name="felix_senders">
+  <ref class="FelixDataSender" id="fds-np02-pds107-s00"/>
+  <ref class="FelixDataSender" id="fds-np02-pds110-s00"/>
+ </rel>
+</obj>
+
+</oks-data>

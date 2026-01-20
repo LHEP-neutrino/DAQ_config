@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ASCII"?>
+
+<!-- oks-data version 2.2 -->
+
+
+<!DOCTYPE oks-data [
+  <!ELEMENT oks-data (info, (include)?, (comments)?, (obj)+)>
+  <!ELEMENT info EMPTY>
+  <!ATTLIST info
+      name CDATA #IMPLIED
+      type CDATA #IMPLIED
+      num-of-items CDATA #REQUIRED
+      oks-format CDATA #FIXED "data"
+      oks-version CDATA #REQUIRED
+      created-by CDATA #IMPLIED
+      created-on CDATA #IMPLIED
+      creation-time CDATA #IMPLIED
+      last-modified-by CDATA #IMPLIED
+      last-modified-on CDATA #IMPLIED
+      last-modification-time CDATA #IMPLIED
+  >
+  <!ELEMENT include (file)*>
+  <!ELEMENT file EMPTY>
+  <!ATTLIST file
+      path CDATA #REQUIRED
+  >
+  <!ELEMENT comments (comment)*>
+  <!ELEMENT comment EMPTY>
+  <!ATTLIST comment
+      creation-time CDATA #REQUIRED
+      created-by CDATA #REQUIRED
+      created-on CDATA #REQUIRED
+      author CDATA #REQUIRED
+      text CDATA #REQUIRED
+  >
+  <!ELEMENT obj (attr | rel)*>
+  <!ATTLIST obj
+      class CDATA #REQUIRED
+      id CDATA #REQUIRED
+  >
+  <!ELEMENT attr (data)*>
+  <!ATTLIST attr
+      name CDATA #REQUIRED
+      type (bool|s8|u8|s16|u16|s32|u32|s64|u64|float|double|date|time|string|uid|enum|class|-) "-"
+      val CDATA ""
+  >
+  <!ELEMENT data EMPTY>
+  <!ATTLIST data
+      val CDATA #REQUIRED
+  >
+  <!ELEMENT rel (ref)*>
+  <!ATTLIST rel
+      name CDATA #REQUIRED
+      class CDATA ""
+      id CDATA ""
+  >
+  <!ELEMENT ref EMPTY>
+  <!ATTLIST ref
+      class CDATA #REQUIRED
+      id CDATA #REQUIRED
+  >
+]>
+
+<oks-data>
+
+<info name="" type="" num-of-items="7" oks-format="data" oks-version="862f2957270" created-by="gjc" created-on="thinkpad" creation-time="20240306T144154" last-modified-by="maroda" last-modified-on="np04-srv-015.cern.ch" last-modification-time="20250724T141739"/>
+
+<include>
+ <file path="schema/confmodel/dunedaq.schema.xml"/>
+ <file path="schema/appmodel/application.schema.xml"/>
+ <file path="schema/appmodel/fdmodules.schema.xml"/>
+ <file path="schema/appmodel/wiec.schema.xml"/>
+ <file path="defaults/fsm.data.xml"/>
+ <file path="defaults/ccm.data.xml"/>
+ <file path="defaults/connections.data.xml"/>
+ <file path="defaults/moduleconfs.data.xml"/>
+ <file path="defaults/wiecconfs.data.xml"/>
+ <file path="hw/ndlar-det-connections.data.xml"/>
+ <file path="hw/hosts.data.xml"/>
+ <file path="segments/dataflow.data.xml"/>
+ <file path="segments/trigger.data.xml"/>
+ <file path="segments/ndlar-pds.data.xml"/>
+</include>
+
+<comments>
+</comments>
+
+
+<obj class="DetectorConfig" id="ndlar-detector">
+ <attr name="tpg_channel_map" type="string" val="PD2VDTPCChannelMap"/> <!-- TODO: Define a channel map. -->
+ <attr name="clock_speed_hz" type="u32" val="62500000"/>
+ <attr name="op_env" type="string" val="ndlar"/>
+ <attr name="offline_data_stream" type="string" val="cosmics"/>
+</obj>
+
+<obj class="Segment" id="root-segment">
+ <rel name="segments">
+  <ref class="Segment" id="df-segment"/>
+  <ref class="Segment" id="trg-segment"/>
+  <ref class="Segment" id="pds-segment"/>
+ </rel>
+ <rel name="controller" class="RCApplication" id="root-controller"/>
+</obj>
+
+<obj class="Session" id="ndlar-session">
+ <attr name="data_request_timeout_ms" type="u32" val="1000"/>
+ <attr name="data_rate_slowdown_factor" type="u32" val="1"/>
+ <attr name="controller_log_level" type="enum" val="INFO"/>
+ <rel name="connectivity_service" class="ConnectivityService" id="local-connectivity-service-config"/>
+ <rel name="environment">
+  <ref class="VariableSet" id="local-variables"/>
+ </rel>
+ <rel name="segment" class="Segment" id="root-segment"/>
+ <rel name="infrastructure_applications">
+  <ref class="ConnectionService" id="local-connection-server"/>
+ </rel>
+ <rel name="detector_configuration" class="DetectorConfig" id="ndlar-detector"/>
+ <rel name="opmon_uri" class="OpMonURI" id="local-opmon-uri"/>
+</obj>
+
+</oks-data>

@@ -1,0 +1,1249 @@
+<?xml version="1.0" encoding="ASCII"?>
+
+<!-- oks-data version 2.2 -->
+
+
+<!DOCTYPE oks-data [
+  <!ELEMENT oks-data (info, (include)?, (comments)?, (obj)+)>
+  <!ELEMENT info EMPTY>
+  <!ATTLIST info
+      name CDATA #IMPLIED
+      type CDATA #IMPLIED
+      num-of-items CDATA #REQUIRED
+      oks-format CDATA #FIXED "data"
+      oks-version CDATA #REQUIRED
+      created-by CDATA #IMPLIED
+      created-on CDATA #IMPLIED
+      creation-time CDATA #IMPLIED
+      last-modified-by CDATA #IMPLIED
+      last-modified-on CDATA #IMPLIED
+      last-modification-time CDATA #IMPLIED
+  >
+  <!ELEMENT include (file)*>
+  <!ELEMENT file EMPTY>
+  <!ATTLIST file
+      path CDATA #REQUIRED
+  >
+  <!ELEMENT comments (comment)*>
+  <!ELEMENT comment EMPTY>
+  <!ATTLIST comment
+      creation-time CDATA #REQUIRED
+      created-by CDATA #REQUIRED
+      created-on CDATA #REQUIRED
+      author CDATA #REQUIRED
+      text CDATA #REQUIRED
+  >
+  <!ELEMENT obj (attr | rel)*>
+  <!ATTLIST obj
+      class CDATA #REQUIRED
+      id CDATA #REQUIRED
+  >
+  <!ELEMENT attr (data)*>
+  <!ATTLIST attr
+      name CDATA #REQUIRED
+      type (bool|s8|u8|s16|u16|s32|u32|s64|u64|float|double|date|time|string|uid|enum|class|-) "-"
+      val CDATA ""
+  >
+  <!ELEMENT data EMPTY>
+  <!ATTLIST data
+      val CDATA #REQUIRED
+  >
+  <!ELEMENT rel (ref)*>
+  <!ATTLIST rel
+      name CDATA #REQUIRED
+      class CDATA ""
+      id CDATA ""
+  >
+  <!ELEMENT ref EMPTY>
+  <!ATTLIST ref
+      class CDATA #REQUIRED
+      id CDATA #REQUIRED
+  >
+]>
+
+<oks-data>
+
+<info name="" type="" num-of-items="91" oks-format="data" oks-version="862f2957270" created-by="gjc" created-on="thinkpad" creation-time="20230320T153246" last-modified-by="sbhuller" last-modified-on="np04-srv-017.cern.ch" last-modification-time="20250220T104226"/>
+
+<include>
+ <file path="schema/confmodel/dunedaq.schema.xml"/>
+</include>
+
+<comments>
+</comments>
+
+
+<obj class="PhysicalHost" id="localhost">
+ <rel name="contains">
+  <ref class="ProcessingResource" id="localhost_cpus"/>
+ </rel>
+</obj>
+
+<obj class="PhysicalHost" id="monkafka.cern.ch">
+ <rel name="contains">
+  <ref class="ProcessingResource" id="localhost_cpus"/>
+ </rel>
+</obj>
+
+<obj class="PhysicalHost" id="argoncube54">
+ <rel name="contains">
+  <ref class="ProcessingResource" id="Xeon-Silver-4309Y-2.80GHz-0"/>
+ </rel>
+</obj>
+
+<obj class="PhysicalHost" id="pocket-host">
+ <rel name="contains">
+  <ref class="ProcessingResource" id="localhost_cpus"/>
+ </rel>
+</obj>
+
+<obj class="ProcessingResource" id="AMD-EPYC-7313-3.70GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="1"/>
+  <data val="2"/>
+  <data val="3"/>
+  <data val="4"/>
+  <data val="5"/>
+  <data val="6"/>
+  <data val="7"/>
+  <data val="8"/>
+  <data val="9"/>
+  <data val="10"/>
+  <data val="11"/>
+  <data val="12"/>
+  <data val="13"/>
+  <data val="14"/>
+  <data val="15"/>
+  <data val="32"/>
+  <data val="33"/>
+  <data val="34"/>
+  <data val="35"/>
+  <data val="36"/>
+  <data val="37"/>
+  <data val="38"/>
+  <data val="39"/>
+  <data val="40"/>
+  <data val="41"/>
+  <data val="42"/>
+  <data val="43"/>
+  <data val="44"/>
+  <data val="45"/>
+  <data val="46"/>
+  <data val="47"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="AMD-EPYC-7313-3.70GHz-1">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="16"/>
+  <data val="17"/>
+  <data val="18"/>
+  <data val="19"/>
+  <data val="20"/>
+  <data val="21"/>
+  <data val="22"/>
+  <data val="23"/>
+  <data val="24"/>
+  <data val="25"/>
+  <data val="26"/>
+  <data val="27"/>
+  <data val="28"/>
+  <data val="29"/>
+  <data val="30"/>
+  <data val="31"/>
+  <data val="48"/>
+  <data val="49"/>
+  <data val="50"/>
+  <data val="51"/>
+  <data val="52"/>
+  <data val="53"/>
+  <data val="54"/>
+  <data val="55"/>
+  <data val="56"/>
+  <data val="57"/>
+  <data val="58"/>
+  <data val="59"/>
+  <data val="60"/>
+  <data val="61"/>
+  <data val="62"/>
+  <data val="63"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="AMD-EPYC-7763-3GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="1"/>
+  <data val="2"/>
+  <data val="3"/>
+  <data val="4"/>
+  <data val="5"/>
+  <data val="6"/>
+  <data val="7"/>
+  <data val="8"/>
+  <data val="9"/>
+  <data val="10"/>
+  <data val="11"/>
+  <data val="12"/>
+  <data val="13"/>
+  <data val="14"/>
+  <data val="15"/>
+  <data val="16"/>
+  <data val="17"/>
+  <data val="18"/>
+  <data val="19"/>
+  <data val="20"/>
+  <data val="21"/>
+  <data val="22"/>
+  <data val="23"/>
+  <data val="24"/>
+  <data val="25"/>
+  <data val="26"/>
+  <data val="27"/>
+  <data val="28"/>
+  <data val="29"/>
+  <data val="30"/>
+  <data val="31"/>
+  <data val="128"/>
+  <data val="129"/>
+  <data val="130"/>
+  <data val="131"/>
+  <data val="132"/>
+  <data val="133"/>
+  <data val="134"/>
+  <data val="135"/>
+  <data val="136"/>
+  <data val="137"/>
+  <data val="138"/>
+  <data val="139"/>
+  <data val="140"/>
+  <data val="141"/>
+  <data val="142"/>
+  <data val="143"/>
+  <data val="144"/>
+  <data val="145"/>
+  <data val="146"/>
+  <data val="147"/>
+  <data val="148"/>
+  <data val="149"/>
+  <data val="150"/>
+  <data val="151"/>
+  <data val="152"/>
+  <data val="153"/>
+  <data val="154"/>
+  <data val="155"/>
+  <data val="156"/>
+  <data val="157"/>
+  <data val="158"/>
+  <data val="159"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="AMD-EPYC-7763-3GHz-1">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="32"/>
+  <data val="33"/>
+  <data val="34"/>
+  <data val="35"/>
+  <data val="36"/>
+  <data val="37"/>
+  <data val="38"/>
+  <data val="39"/>
+  <data val="40"/>
+  <data val="41"/>
+  <data val="42"/>
+  <data val="43"/>
+  <data val="44"/>
+  <data val="45"/>
+  <data val="46"/>
+  <data val="47"/>
+  <data val="48"/>
+  <data val="49"/>
+  <data val="50"/>
+  <data val="51"/>
+  <data val="52"/>
+  <data val="53"/>
+  <data val="54"/>
+  <data val="55"/>
+  <data val="56"/>
+  <data val="57"/>
+  <data val="58"/>
+  <data val="59"/>
+  <data val="60"/>
+  <data val="61"/>
+  <data val="62"/>
+  <data val="63"/>
+  <data val="160"/>
+  <data val="161"/>
+  <data val="162"/>
+  <data val="163"/>
+  <data val="164"/>
+  <data val="165"/>
+  <data val="166"/>
+  <data val="167"/>
+  <data val="168"/>
+  <data val="169"/>
+  <data val="170"/>
+  <data val="171"/>
+  <data val="172"/>
+  <data val="173"/>
+  <data val="174"/>
+  <data val="175"/>
+  <data val="176"/>
+  <data val="177"/>
+  <data val="178"/>
+  <data val="179"/>
+  <data val="180"/>
+  <data val="181"/>
+  <data val="182"/>
+  <data val="183"/>
+  <data val="184"/>
+  <data val="185"/>
+  <data val="186"/>
+  <data val="187"/>
+  <data val="188"/>
+  <data val="189"/>
+  <data val="190"/>
+  <data val="191"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="AMD-EPYC-7763-3GHz-2">
+ <attr name="numa_id" type="u8" val="2"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="64"/>
+  <data val="65"/>
+  <data val="66"/>
+  <data val="67"/>
+  <data val="68"/>
+  <data val="69"/>
+  <data val="70"/>
+  <data val="71"/>
+  <data val="72"/>
+  <data val="73"/>
+  <data val="74"/>
+  <data val="75"/>
+  <data val="76"/>
+  <data val="77"/>
+  <data val="78"/>
+  <data val="79"/>
+  <data val="80"/>
+  <data val="81"/>
+  <data val="82"/>
+  <data val="83"/>
+  <data val="84"/>
+  <data val="85"/>
+  <data val="86"/>
+  <data val="87"/>
+  <data val="88"/>
+  <data val="89"/>
+  <data val="90"/>
+  <data val="91"/>
+  <data val="92"/>
+  <data val="93"/>
+  <data val="94"/>
+  <data val="95"/>
+  <data val="192"/>
+  <data val="193"/>
+  <data val="194"/>
+  <data val="195"/>
+  <data val="196"/>
+  <data val="197"/>
+  <data val="198"/>
+  <data val="199"/>
+  <data val="200"/>
+  <data val="201"/>
+  <data val="202"/>
+  <data val="203"/>
+  <data val="204"/>
+  <data val="205"/>
+  <data val="206"/>
+  <data val="207"/>
+  <data val="208"/>
+  <data val="209"/>
+  <data val="210"/>
+  <data val="211"/>
+  <data val="212"/>
+  <data val="213"/>
+  <data val="214"/>
+  <data val="215"/>
+  <data val="216"/>
+  <data val="217"/>
+  <data val="218"/>
+  <data val="219"/>
+  <data val="220"/>
+  <data val="221"/>
+  <data val="222"/>
+  <data val="223"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="AMD-EPYC-7763-3GHz-3">
+ <attr name="numa_id" type="u8" val="3"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="96"/>
+  <data val="97"/>
+  <data val="98"/>
+  <data val="99"/>
+  <data val="100"/>
+  <data val="101"/>
+  <data val="102"/>
+  <data val="103"/>
+  <data val="104"/>
+  <data val="105"/>
+  <data val="106"/>
+  <data val="107"/>
+  <data val="108"/>
+  <data val="109"/>
+  <data val="110"/>
+  <data val="111"/>
+  <data val="112"/>
+  <data val="113"/>
+  <data val="114"/>
+  <data val="115"/>
+  <data val="116"/>
+  <data val="117"/>
+  <data val="118"/>
+  <data val="119"/>
+  <data val="120"/>
+  <data val="121"/>
+  <data val="122"/>
+  <data val="123"/>
+  <data val="124"/>
+  <data val="125"/>
+  <data val="126"/>
+  <data val="127"/>
+  <data val="224"/>
+  <data val="225"/>
+  <data val="226"/>
+  <data val="227"/>
+  <data val="228"/>
+  <data val="229"/>
+  <data val="230"/>
+  <data val="231"/>
+  <data val="232"/>
+  <data val="233"/>
+  <data val="234"/>
+  <data val="235"/>
+  <data val="236"/>
+  <data val="237"/>
+  <data val="238"/>
+  <data val="239"/>
+  <data val="240"/>
+  <data val="241"/>
+  <data val="242"/>
+  <data val="243"/>
+  <data val="244"/>
+  <data val="245"/>
+  <data val="246"/>
+  <data val="247"/>
+  <data val="248"/>
+  <data val="249"/>
+  <data val="250"/>
+  <data val="251"/>
+  <data val="252"/>
+  <data val="253"/>
+  <data val="254"/>
+  <data val="255"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-E5-2620-v4-2.10GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="2"/>
+  <data val="4"/>
+  <data val="6"/>
+  <data val="8"/>
+  <data val="10"/>
+  <data val="12"/>
+  <data val="14"/>
+  <data val="16"/>
+  <data val="18"/>
+  <data val="20"/>
+  <data val="22"/>
+  <data val="24"/>
+  <data val="26"/>
+  <data val="28"/>
+  <data val="30"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-E5-2620-v4-2.10GHz-1">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="1"/>
+  <data val="3"/>
+  <data val="5"/>
+  <data val="7"/>
+  <data val="9"/>
+  <data val="11"/>
+  <data val="13"/>
+  <data val="15"/>
+  <data val="17"/>
+  <data val="19"/>
+  <data val="21"/>
+  <data val="23"/>
+  <data val="25"/>
+  <data val="27"/>
+  <data val="29"/>
+  <data val="31"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-E5-2630-v4-2.20GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="1"/>
+  <data val="2"/>
+  <data val="3"/>
+  <data val="4"/>
+  <data val="5"/>
+  <data val="6"/>
+  <data val="7"/>
+  <data val="8"/>
+  <data val="9"/>
+  <data val="20"/>
+  <data val="21"/>
+  <data val="22"/>
+  <data val="23"/>
+  <data val="24"/>
+  <data val="25"/>
+  <data val="26"/>
+  <data val="27"/>
+  <data val="28"/>
+  <data val="29"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-E5-2630-v4-2.20GHz-1">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="10"/>
+  <data val="11"/>
+  <data val="12"/>
+  <data val="13"/>
+  <data val="14"/>
+  <data val="15"/>
+  <data val="16"/>
+  <data val="17"/>
+  <data val="18"/>
+  <data val="19"/>
+  <data val="30"/>
+  <data val="31"/>
+  <data val="32"/>
+  <data val="33"/>
+  <data val="34"/>
+  <data val="35"/>
+  <data val="36"/>
+  <data val="37"/>
+  <data val="38"/>
+  <data val="39"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-5118-2.30GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="1"/>
+  <data val="2"/>
+  <data val="3"/>
+  <data val="4"/>
+  <data val="5"/>
+  <data val="6"/>
+  <data val="7"/>
+  <data val="8"/>
+  <data val="9"/>
+  <data val="10"/>
+  <data val="11"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-5118-2.30GHz-0h">
+ <attr name="cpu_cores" type="u16">
+  <data val="24"/>
+  <data val="25"/>
+  <data val="26"/>
+  <data val="27"/>
+  <data val="28"/>
+  <data val="29"/>
+  <data val="30"/>
+  <data val="31"/>
+  <data val="32"/>
+  <data val="33"/>
+  <data val="34"/>
+  <data val="35"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-5118-2.30GHz-1">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="12"/>
+  <data val="13"/>
+  <data val="14"/>
+  <data val="15"/>
+  <data val="16"/>
+  <data val="17"/>
+  <data val="18"/>
+  <data val="19"/>
+  <data val="20"/>
+  <data val="21"/>
+  <data val="22"/>
+  <data val="23"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-5118-2.30GHz-1h">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="36"/>
+  <data val="37"/>
+  <data val="38"/>
+  <data val="39"/>
+  <data val="40"/>
+  <data val="41"/>
+  <data val="42"/>
+  <data val="43"/>
+  <data val="44"/>
+  <data val="45"/>
+  <data val="46"/>
+  <data val="47"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-6136-3.00GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="1"/>
+  <data val="2"/>
+  <data val="3"/>
+  <data val="4"/>
+  <data val="5"/>
+  <data val="6"/>
+  <data val="7"/>
+  <data val="8"/>
+  <data val="9"/>
+  <data val="10"/>
+  <data val="11"/>
+  <data val="24"/>
+  <data val="25"/>
+  <data val="26"/>
+  <data val="27"/>
+  <data val="28"/>
+  <data val="29"/>
+  <data val="30"/>
+  <data val="31"/>
+  <data val="32"/>
+  <data val="33"/>
+  <data val="34"/>
+  <data val="35"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-6136-3.00GHz-1">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="12"/>
+  <data val="13"/>
+  <data val="14"/>
+  <data val="15"/>
+  <data val="16"/>
+  <data val="17"/>
+  <data val="18"/>
+  <data val="19"/>
+  <data val="20"/>
+  <data val="21"/>
+  <data val="22"/>
+  <data val="23"/>
+  <data val="36"/>
+  <data val="37"/>
+  <data val="38"/>
+  <data val="39"/>
+  <data val="40"/>
+  <data val="41"/>
+  <data val="42"/>
+  <data val="43"/>
+  <data val="44"/>
+  <data val="45"/>
+  <data val="46"/>
+  <data val="47"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-6242-2.80GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="2"/>
+  <data val="4"/>
+  <data val="6"/>
+  <data val="8"/>
+  <data val="10"/>
+  <data val="12"/>
+  <data val="14"/>
+  <data val="16"/>
+  <data val="18"/>
+  <data val="20"/>
+  <data val="22"/>
+  <data val="24"/>
+  <data val="26"/>
+  <data val="28"/>
+  <data val="30"/>
+  <data val="32"/>
+  <data val="34"/>
+  <data val="36"/>
+  <data val="38"/>
+  <data val="40"/>
+  <data val="42"/>
+  <data val="44"/>
+  <data val="46"/>
+  <data val="48"/>
+  <data val="50"/>
+  <data val="52"/>
+  <data val="54"/>
+  <data val="56"/>
+  <data val="58"/>
+  <data val="60"/>
+  <data val="62"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-6242-2.80GHz-1">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="1"/>
+  <data val="3"/>
+  <data val="5"/>
+  <data val="7"/>
+  <data val="9"/>
+  <data val="11"/>
+  <data val="13"/>
+  <data val="15"/>
+  <data val="17"/>
+  <data val="19"/>
+  <data val="21"/>
+  <data val="23"/>
+  <data val="25"/>
+  <data val="27"/>
+  <data val="29"/>
+  <data val="31"/>
+  <data val="33"/>
+  <data val="35"/>
+  <data val="37"/>
+  <data val="39"/>
+  <data val="41"/>
+  <data val="43"/>
+  <data val="45"/>
+  <data val="47"/>
+  <data val="49"/>
+  <data val="51"/>
+  <data val="53"/>
+  <data val="55"/>
+  <data val="57"/>
+  <data val="59"/>
+  <data val="61"/>
+  <data val="63"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-6346-3.10GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="1"/>
+  <data val="2"/>
+  <data val="3"/>
+  <data val="4"/>
+  <data val="5"/>
+  <data val="6"/>
+  <data val="7"/>
+  <data val="8"/>
+  <data val="9"/>
+  <data val="10"/>
+  <data val="11"/>
+  <data val="12"/>
+  <data val="13"/>
+  <data val="14"/>
+  <data val="15"/>
+  <data val="32"/>
+  <data val="33"/>
+  <data val="34"/>
+  <data val="35"/>
+  <data val="36"/>
+  <data val="37"/>
+  <data val="38"/>
+  <data val="39"/>
+  <data val="40"/>
+  <data val="41"/>
+  <data val="42"/>
+  <data val="43"/>
+  <data val="44"/>
+  <data val="45"/>
+  <data val="46"/>
+  <data val="47"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-6346-3.10GHz-1">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="16"/>
+  <data val="17"/>
+  <data val="18"/>
+  <data val="19"/>
+  <data val="20"/>
+  <data val="21"/>
+  <data val="22"/>
+  <data val="23"/>
+  <data val="24"/>
+  <data val="25"/>
+  <data val="26"/>
+  <data val="27"/>
+  <data val="28"/>
+  <data val="29"/>
+  <data val="30"/>
+  <data val="31"/>
+  <data val="48"/>
+  <data val="49"/>
+  <data val="50"/>
+  <data val="51"/>
+  <data val="52"/>
+  <data val="53"/>
+  <data val="54"/>
+  <data val="55"/>
+  <data val="56"/>
+  <data val="57"/>
+  <data val="58"/>
+  <data val="59"/>
+  <data val="60"/>
+  <data val="61"/>
+  <data val="62"/>
+  <data val="63"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-6348-2.60GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="2"/>
+  <data val="4"/>
+  <data val="6"/>
+  <data val="8"/>
+  <data val="10"/>
+  <data val="12"/>
+  <data val="14"/>
+  <data val="16"/>
+  <data val="18"/>
+  <data val="20"/>
+  <data val="22"/>
+  <data val="24"/>
+  <data val="26"/>
+  <data val="28"/>
+  <data val="30"/>
+  <data val="32"/>
+  <data val="34"/>
+  <data val="36"/>
+  <data val="38"/>
+  <data val="40"/>
+  <data val="42"/>
+  <data val="44"/>
+  <data val="46"/>
+  <data val="48"/>
+  <data val="50"/>
+  <data val="52"/>
+  <data val="54"/>
+  <data val="56"/>
+  <data val="58"/>
+  <data val="60"/>
+  <data val="62"/>
+  <data val="64"/>
+  <data val="66"/>
+  <data val="68"/>
+  <data val="70"/>
+  <data val="72"/>
+  <data val="74"/>
+  <data val="76"/>
+  <data val="78"/>
+  <data val="80"/>
+  <data val="82"/>
+  <data val="84"/>
+  <data val="86"/>
+  <data val="88"/>
+  <data val="90"/>
+  <data val="92"/>
+  <data val="94"/>
+  <data val="96"/>
+  <data val="98"/>
+  <data val="100"/>
+  <data val="102"/>
+  <data val="104"/>
+  <data val="106"/>
+  <data val="108"/>
+  <data val="110"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-6348-2.60GHz-1">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="1"/>
+  <data val="3"/>
+  <data val="5"/>
+  <data val="7"/>
+  <data val="9"/>
+  <data val="11"/>
+  <data val="13"/>
+  <data val="15"/>
+  <data val="17"/>
+  <data val="19"/>
+  <data val="21"/>
+  <data val="23"/>
+  <data val="25"/>
+  <data val="27"/>
+  <data val="29"/>
+  <data val="31"/>
+  <data val="33"/>
+  <data val="35"/>
+  <data val="37"/>
+  <data val="39"/>
+  <data val="41"/>
+  <data val="43"/>
+  <data val="45"/>
+  <data val="47"/>
+  <data val="49"/>
+  <data val="51"/>
+  <data val="53"/>
+  <data val="55"/>
+  <data val="57"/>
+  <data val="59"/>
+  <data val="61"/>
+  <data val="63"/>
+  <data val="65"/>
+  <data val="67"/>
+  <data val="69"/>
+  <data val="71"/>
+  <data val="73"/>
+  <data val="75"/>
+  <data val="77"/>
+  <data val="79"/>
+  <data val="81"/>
+  <data val="83"/>
+  <data val="85"/>
+  <data val="87"/>
+  <data val="89"/>
+  <data val="91"/>
+  <data val="93"/>
+  <data val="95"/>
+  <data val="97"/>
+  <data val="99"/>
+  <data val="101"/>
+  <data val="103"/>
+  <data val="105"/>
+  <data val="107"/>
+  <data val="109"/>
+  <data val="111"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-6448H-4.10GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="1"/>
+  <data val="2"/>
+  <data val="3"/>
+  <data val="4"/>
+  <data val="5"/>
+  <data val="6"/>
+  <data val="7"/>
+  <data val="8"/>
+  <data val="9"/>
+  <data val="10"/>
+  <data val="11"/>
+  <data val="12"/>
+  <data val="13"/>
+  <data val="14"/>
+  <data val="15"/>
+  <data val="16"/>
+  <data val="17"/>
+  <data val="18"/>
+  <data val="19"/>
+  <data val="20"/>
+  <data val="21"/>
+  <data val="22"/>
+  <data val="23"/>
+  <data val="24"/>
+  <data val="25"/>
+  <data val="26"/>
+  <data val="27"/>
+  <data val="28"/>
+  <data val="29"/>
+  <data val="30"/>
+  <data val="31"/>
+  <data val="64"/>
+  <data val="65"/>
+  <data val="66"/>
+  <data val="67"/>
+  <data val="68"/>
+  <data val="69"/>
+  <data val="70"/>
+  <data val="71"/>
+  <data val="72"/>
+  <data val="73"/>
+  <data val="74"/>
+  <data val="75"/>
+  <data val="76"/>
+  <data val="77"/>
+  <data val="78"/>
+  <data val="79"/>
+  <data val="80"/>
+  <data val="81"/>
+  <data val="82"/>
+  <data val="83"/>
+  <data val="84"/>
+  <data val="85"/>
+  <data val="86"/>
+  <data val="87"/>
+  <data val="88"/>
+  <data val="89"/>
+  <data val="90"/>
+  <data val="91"/>
+  <data val="92"/>
+  <data val="93"/>
+  <data val="94"/>
+  <data val="95"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Gold-6448H-4.10GHz-1">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="32"/>
+  <data val="33"/>
+  <data val="34"/>
+  <data val="35"/>
+  <data val="36"/>
+  <data val="37"/>
+  <data val="38"/>
+  <data val="39"/>
+  <data val="40"/>
+  <data val="41"/>
+  <data val="42"/>
+  <data val="43"/>
+  <data val="44"/>
+  <data val="45"/>
+  <data val="46"/>
+  <data val="47"/>
+  <data val="48"/>
+  <data val="49"/>
+  <data val="50"/>
+  <data val="51"/>
+  <data val="52"/>
+  <data val="53"/>
+  <data val="54"/>
+  <data val="55"/>
+  <data val="56"/>
+  <data val="57"/>
+  <data val="58"/>
+  <data val="59"/>
+  <data val="60"/>
+  <data val="61"/>
+  <data val="62"/>
+  <data val="63"/>
+  <data val="96"/>
+  <data val="97"/>
+  <data val="98"/>
+  <data val="99"/>
+  <data val="100"/>
+  <data val="101"/>
+  <data val="102"/>
+  <data val="103"/>
+  <data val="104"/>
+  <data val="105"/>
+  <data val="106"/>
+  <data val="107"/>
+  <data val="108"/>
+  <data val="109"/>
+  <data val="110"/>
+  <data val="111"/>
+  <data val="112"/>
+  <data val="113"/>
+  <data val="114"/>
+  <data val="115"/>
+  <data val="116"/>
+  <data val="117"/>
+  <data val="118"/>
+  <data val="119"/>
+  <data val="120"/>
+  <data val="121"/>
+  <data val="122"/>
+  <data val="123"/>
+  <data val="124"/>
+  <data val="125"/>
+  <data val="126"/>
+  <data val="127"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Silver-4309Y-2.80GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="1"/>
+  <data val="2"/>
+  <data val="3"/>
+  <data val="4"/>
+  <data val="5"/>
+  <data val="6"/>
+  <data val="7"/>
+  <data val="8"/>
+  <data val="9"/>
+  <data val="10"/>
+  <data val="11"/>
+  <data val="12"/>
+  <data val="13"/>
+  <data val="14"/>
+  <data val="15"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Silver-4110-2.10GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="1"/>
+  <data val="2"/>
+  <data val="3"/>
+  <data val="4"/>
+  <data val="5"/>
+  <data val="6"/>
+  <data val="7"/>
+  <data val="16"/>
+  <data val="17"/>
+  <data val="18"/>
+  <data val="19"/>
+  <data val="20"/>
+  <data val="21"/>
+  <data val="22"/>
+  <data val="23"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Silver-4110-2.10GHz-1">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="8"/>
+  <data val="9"/>
+  <data val="10"/>
+  <data val="11"/>
+  <data val="12"/>
+  <data val="13"/>
+  <data val="14"/>
+  <data val="15"/>
+  <data val="24"/>
+  <data val="25"/>
+  <data val="26"/>
+  <data val="27"/>
+  <data val="28"/>
+  <data val="29"/>
+  <data val="30"/>
+  <data val="31"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Silver-4214-2.20GHz-0">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="2"/>
+  <data val="4"/>
+  <data val="6"/>
+  <data val="8"/>
+  <data val="10"/>
+  <data val="12"/>
+  <data val="14"/>
+  <data val="16"/>
+  <data val="18"/>
+  <data val="20"/>
+  <data val="22"/>
+  <data val="24"/>
+  <data val="26"/>
+  <data val="28"/>
+  <data val="30"/>
+  <data val="32"/>
+  <data val="34"/>
+  <data val="36"/>
+  <data val="38"/>
+  <data val="40"/>
+  <data val="42"/>
+  <data val="44"/>
+  <data val="46"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="Xeon-Silver-4214-2.20GHz-1">
+ <attr name="numa_id" type="u8" val="1"/>
+ <attr name="cpu_cores" type="u16">
+  <data val="1"/>
+  <data val="3"/>
+  <data val="5"/>
+  <data val="7"/>
+  <data val="9"/>
+  <data val="11"/>
+  <data val="13"/>
+  <data val="15"/>
+  <data val="17"/>
+  <data val="19"/>
+  <data val="21"/>
+  <data val="23"/>
+  <data val="25"/>
+  <data val="27"/>
+  <data val="29"/>
+  <data val="31"/>
+  <data val="33"/>
+  <data val="35"/>
+  <data val="37"/>
+  <data val="39"/>
+  <data val="41"/>
+  <data val="43"/>
+  <data val="45"/>
+  <data val="47"/>
+ </attr>
+</obj>
+
+<obj class="ProcessingResource" id="localhost_cpus">
+ <attr name="cpu_cores" type="u16">
+  <data val="0"/>
+  <data val="1"/>
+  <data val="2"/>
+  <data val="3"/>
+ </attr>
+</obj>
+
+<obj class="VirtualHost" id="kafka-cern-vhost">
+ <rel name="uses">
+  <ref class="ProcessingResource" id="localhost_cpus"/>
+ </rel>
+ <rel name="runs_on" class="PhysicalHost" id="monkafka.cern.ch"/>
+</obj>
+
+<obj class="VirtualHost" id="kafka-pocket-vhost">
+ <rel name="uses">
+  <ref class="ProcessingResource" id="localhost_cpus"/>
+ </rel>
+ <rel name="runs_on" class="PhysicalHost" id="pocket-host"/>
+</obj>
+
+<obj class="VirtualHost" id="vh-argoncube-054">
+ <rel name="uses">
+  <ref class="ProcessingResource" id="Xeon-Silver-4309Y-2.80GHz-0"/>
+ </rel>
+ <rel name="runs_on" class="PhysicalHost" id="argoncube54"/>
+</obj>
+
+<obj class="VirtualHost" id="vlocalhost">
+ <rel name="uses">
+  <ref class="ProcessingResource" id="localhost_cpus"/>
+ </rel>
+ <rel name="runs_on" class="PhysicalHost" id="localhost"/>
+</obj>
+
+</oks-data>

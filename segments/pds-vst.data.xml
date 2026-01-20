@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="ASCII"?>
+
+<!-- oks-data version 2.2 -->
+
+
+<!DOCTYPE oks-data [
+  <!ELEMENT oks-data (info, (include)?, (comments)?, (obj)+)>
+  <!ELEMENT info EMPTY>
+  <!ATTLIST info
+      name CDATA #IMPLIED
+      type CDATA #IMPLIED
+      num-of-items CDATA #REQUIRED
+      oks-format CDATA #FIXED "data"
+      oks-version CDATA #REQUIRED
+      created-by CDATA #IMPLIED
+      created-on CDATA #IMPLIED
+      creation-time CDATA #IMPLIED
+      last-modified-by CDATA #IMPLIED
+      last-modified-on CDATA #IMPLIED
+      last-modification-time CDATA #IMPLIED
+  >
+  <!ELEMENT include (file)*>
+  <!ELEMENT file EMPTY>
+  <!ATTLIST file
+      path CDATA #REQUIRED
+  >
+  <!ELEMENT comments (comment)*>
+  <!ELEMENT comment EMPTY>
+  <!ATTLIST comment
+      creation-time CDATA #REQUIRED
+      created-by CDATA #REQUIRED
+      created-on CDATA #REQUIRED
+      author CDATA #REQUIRED
+      text CDATA #REQUIRED
+  >
+  <!ELEMENT obj (attr | rel)*>
+  <!ATTLIST obj
+      class CDATA #REQUIRED
+      id CDATA #REQUIRED
+  >
+  <!ELEMENT attr (data)*>
+  <!ATTLIST attr
+      name CDATA #REQUIRED
+      type (bool|s8|u8|s16|u16|s32|u32|s64|u64|float|double|date|time|string|uid|enum|class|-) "-"
+      val CDATA ""
+  >
+  <!ELEMENT data EMPTY>
+  <!ATTLIST data
+      val CDATA #REQUIRED
+  >
+  <!ELEMENT rel (ref)*>
+  <!ATTLIST rel
+      name CDATA #REQUIRED
+      class CDATA ""
+      id CDATA ""
+  >
+  <!ELEMENT ref EMPTY>
+  <!ATTLIST ref
+      class CDATA #REQUIRED
+      id CDATA #REQUIRED
+  >
+]>
+
+<oks-data>
+
+<info name="" type="" num-of-items="16" oks-format="data" oks-version="862f2957270" created-by="gjc" created-on="thinkpad" creation-time="20231207T105615" last-modified-by="maroda" last-modified-on="np04-srv-015.cern.ch" last-modification-time="20250925T114203"/>
+
+<include>
+ <file path="schema/appmodel/PDS.schema.xml"/>
+ <file path="schema/appmodel/wiec.schema.xml"/>
+ <file path="schema/appmodel/fdmodules.schema.xml"/>
+ <file path="defaults/connections.data.xml"/>
+ <file path="defaults/moduleconfs.data.xml"/>
+ <file path="defaults/ccm.data.xml"/>
+ <file path="hw/hosts.data.xml"/>
+ <file path="hw/rohw.data.xml"/>
+ <file path="hw/pds-vst-connections.data.xml"/>
+</include>
+
+<comments>
+ <comment creation-time="20241023T144356" created-by="glehmann" created-on="np04-srv-024.cern.ch" author="glehmann" text="added pds example"/>
+ <comment creation-time="20241029T104353" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="fixed pds control service"/>
+ <comment creation-time="20241029T132335" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="np04 pds connection changed to include senders"/>
+ <comment creation-time="20241029T141222" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="Attempt to complete the pds data processor"/>
+ <comment creation-time="20241029T141407" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="pds linkhandler updated"/>
+ <comment creation-time="20241029T142540" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="fixing carc controller command interface"/>
+ <comment creation-time="20241031T154753" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="flx controller control moved to rest"/>
+ <comment creation-time="20241121T100146" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Create draft for application"/>
+ <comment creation-time="20241121T100853" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add control app for daphne app"/>
+ <comment creation-time="20241121T101730" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="fix connections"/>
+ <comment creation-time="20241121T102704" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="set automaic port"/>
+ <comment creation-time="20241121T110403" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="test"/>
+ <comment creation-time="20241122T153211" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add daphne app to session"/>
+ <comment creation-time="20241127T145902" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="set controller app for pds"/>
+ <comment creation-time="20241127T150234" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="different controller for dpahne app"/>
+ <comment creation-time="20241128T105659" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="correct naming for daphne_app"/>
+ <comment creation-time="20241128T105747" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="correct ame for daphne app"/>
+ <comment creation-time="20241128T145303" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="select 0 bias"/>
+ <comment creation-time="20241203T133923" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Re-enable bias"/>
+ <comment creation-time="20241203T134924" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="remove bias"/>
+ <comment creation-time="20241203T135640" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="fix file and enable bias"/>
+ <comment creation-time="20241205T134913" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="Added ssp calibration module config"/>
+ <comment creation-time="20241205T135006" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="added pds calibration module"/>
+ <comment creation-time="20241205T140727" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="adding register"/>
+ <comment creation-time="20241205T143307" created-by="thea" created-on="np02-srv-001.cern.ch" author="thea" text="Added mysterious ssp register"/>
+ <comment creation-time="20250121T181304" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="More updates toward the right configuration for np02 coldbox daphne"/>
+ <comment creation-time="20250131T110851" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Creating first det2Daq connection"/>
+ <comment creation-time="20250131T111514" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Starting creating Daphne app"/>
+ <comment creation-time="20250131T111749" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="correct daphne configurations"/>
+ <comment creation-time="20250131T112618" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Set right controller module"/>
+ <comment creation-time="20250131T114716" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="adding right configurations for ssp"/>
+ <comment creation-time="20250206T094557" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="renamce daphen conf"/>
+ <comment creation-time="20250206T094730" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add and set new configuration"/>
+ <comment creation-time="20250206T145631" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="daphne full mode"/>
+ <comment creation-time="20250207T100732" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="testing full stream mode"/>
+ <comment creation-time="20250207T132312" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Set superchuck to 12"/>
+ <comment creation-time="20250207T133343" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="New CarcCpmtrollerModule"/>
+ <comment creation-time="20250207T160124" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add different pds handlers confs"/>
+ <comment creation-time="20250210T100339" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="set selftrigger"/>
+ <comment creation-time="20250210T101609" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Correct sefltrigger conf"/>
+ <comment creation-time="20250210T104546" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="new selftrigger conf for daphne"/>
+ <comment creation-time="20250219T103417" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="switch daphne default"/>
+ <comment creation-time="20250319T105558" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Add new daphne config"/>
+ <comment creation-time="20250324T110504" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="revert to correct default"/>
+ <comment creation-time="20250327T103421" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Possible configuration for PDS TPG"/>
+ <comment creation-time="20250512T105405" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="remove SSP controller app"/>
+ <comment creation-time="20250701T121423" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Draft of Det2Daq connection for 2 felix"/>
+ <comment creation-time="20250701T122047" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Create new readout application"/>
+ <comment creation-time="20250701T124254" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Add a second felix applications with controllers. Set to fullstream"/>
+ <comment creation-time="20250701T130118" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="More changes"/>
+ <comment creation-time="20250701T131747" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="correct tpg settings"/>
+ <comment creation-time="20250701T134128" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add new applications"/>
+ <comment creation-time="20250701T150457" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add new file"/>
+ <comment creation-time="20250701T151212" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="full linkange of the connections"/>
+ <comment creation-time="20250701T151725" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Correct name"/>
+ <comment creation-time="20250702T075856" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="reorganise segments"/>
+ <comment creation-time="20250702T082157" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Correct streams"/>
+ <comment creation-time="20250702T085508" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="fix files for daphne"/>
+ <comment creation-time="20250702T143858" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add objects"/>
+ <comment creation-time="20250703T112624" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="fix ip address"/>
+ <comment creation-time="20250711T094728" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Update PDS raw data processor"/>
+ <comment creation-time="20250714T085430" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="create new daphne app"/>
+ <comment creation-time="20250714T085557" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add second daphne app"/>
+ <comment creation-time="20250714T085657" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="move around applications"/>
+ <comment creation-time="20250722T122936" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add controllers"/>
+ <comment creation-time="20250723T121320" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="Reorganise things"/>
+ <comment creation-time="20250723T123242" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="remove leftover"/>
+ <comment creation-time="20250807T124817" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="disable time reset"/>
+ <comment creation-time="20250808T152725" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="remove time reset"/>
+ <comment creation-time="20250901T144851" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="move applications"/>
+ <comment creation-time="20250917T130256" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="add dapphne"/>
+ <comment creation-time="20250917T130736" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="adding test app"/>
+ <comment creation-time="20250917T130849" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="adding saphen app to cathode"/>
+ <comment creation-time="20250917T131206" created-by="maroda" created-on="np04-srv-015.cern.ch" author="maroda" text="change slot"/>
+</comments>
+
+
+<obj class="DaphneApplication" id="test-daphne-app">
+ <attr name="application_name" type="string" val="daq_application"/>
+ <attr name="commandline_parameters" type="string">
+  <data val=""/>
+ </attr>
+ <rel name="runs_on" class="VirtualHost" id="vh-np04-srv-013"/>
+ <rel name="exposes_service">
+  <ref class="Service" id="test-daphne-app_control"/>
+ </rel>
+ <rel name="opmon_conf" class="OpMonConf" id="slow-all-monitoring"/>
+ <rel name="configuration" class="DaphneConf" id="daphne_mezz"/>
+ <rel name="detector_connections">
+  <ref class="NetworkDetectorToDaqConnection" id="daphne01-connection"/>
+ </rel>
+ <rel name="hermes_module_conf" class="HermesModuleConf" id="def-hermes-conf"/>
+</obj>
+
+
+<obj class="DaphneConf" id="daphne_mezz">
+ <attr name="timeout_ms" type="u16" val="1500"/>
+ <attr name="time_reset" type="bool" val="1"/>
+ <rel name="default_v2_settings" class="DaphneV2BoardConf" id="daphne-v2-default-board"/>
+ <rel name="boards">
+  <ref class="DaphneMapEntry" id="daphne_mezz-daphne-61-conf"/>
+ </rel>
+ <rel name="default_v3_settings" class="DaphneV2BoardConf" id="daphne-v2-default-board"/>
+</obj>
+
+<obj class="DaphneMapEntry" id="daphne_mezz-daphne-61-conf">
+ <attr name="key" type="string" val="8.3.1"/>
+ <rel name="conf" class="DaphneV2BoardConf" id="daphne_mezz-daphne-61-conf"/>
+</obj>
+
+<obj class="DaphneV2ADC" id="daphne-v2-default-adc">
+ <attr name="low_resolution" type="bool" val="0"/>
+ <attr name="output_offset_binary" type="bool" val="1"/>
+ <attr name="MSB_first" type="bool" val="1"/>
+</obj>
+
+<obj class="DaphneV2ADC" id="daphne_mezz-daphne-61-adc-0">
+ <attr name="low_resolution" type="bool" val="0"/>
+ <attr name="output_offset_binary" type="bool" val="1"/>
+ <attr name="MSB_first" type="bool" val="1"/>
+</obj>
+
+<obj class="DaphneV2AFE" id="daphne-v2-default-afe">
+ <attr name="afe_id" type="u8" val="100"/>
+ <attr name="attenuator" type="u16" val="2666"/>
+ <rel name="adc" class="DaphneV2ADC" id="daphne-v2-default-adc"/>
+ <rel name="pga" class="DaphneV2PGA" id="daphne-v2-default-pga"/>
+ <rel name="lna" class="DaphneV2LNA" id="daphne-v2-default-lna"/>
+</obj>
+
+<obj class="DaphneV2AFE" id="daphne_mezz-daphne-61-afe-0">
+ <attr name="afe_id" type="u8" val="0"/>
+ <attr name="attenuator" type="u16" val="1995"/>
+ <rel name="adc" class="DaphneV2ADC" id="daphne_mezz-daphne-61-adc-0"/>
+ <rel name="pga" class="DaphneV2PGA" id="daphne_mezz-daphne-61-pga-0"/>
+ <rel name="lna" class="DaphneV2LNA" id="daphne_mezz-daphne-61-lna-0"/>
+</obj>
+
+<obj class="DaphneV2BoardConf" id="daphne-v2-default-board">
+ <rel name="default_channel" class="DaphneV2Channel" id="daphne-v2-default-channel"/>
+ <rel name="default_afe" class="DaphneV2AFE" id="daphne-v2-default-afe"/>
+</obj>
+
+<obj class="DaphneV2BoardConf" id="daphne_mezz-daphne-61-conf">
+ <attr name="bias_ctrl" type="u16" val="4095"/>
+ <attr name="self_trigger_threshold" type="u64" val="8000"/>
+ <attr name="self_trigger_xcorr" type="u64" val="4160749570000"/>
+ <attr name="tp_conf" type="u32" val="17881857"/>
+ <attr name="address" type="string" val="10.73.137.161"/>
+ <attr name="slot_id" type="u16" val="1"/>
+ <attr name="crate_id" type="u16" val="3"/>
+ <attr name="detector_id" type="u16" val="8"/>
+ <rel name="active_channels">
+  <ref class="DaphneV2Channel" id="daphne_mezz-daphne-61-channel-0"/>
+ </rel>
+ <rel name="active_afes">
+  <ref class="DaphneV2AFE" id="daphne_mezz-daphne-61-afe-0"/>
+ </rel>
+ <rel name="default_channel" class="DaphneV2Channel" id="daphne-v2-default-channel"/>
+ <rel name="default_afe" class="DaphneV2AFE" id="daphne-v2-default-afe"/>
+</obj>
+
+<obj class="DaphneV2Channel" id="daphne-v2-default-channel">
+ <attr name="gain" type="u8" val="1"/>
+ <attr name="offset" type="u16" val="2200"/>
+ <attr name="channel_id" type="u8" val="100"/>
+ <attr name="stream_id" type="s8" val="-1"/>
+</obj>
+
+<obj class="DaphneV2Channel" id="daphne_mezz-daphne-61-channel-0">
+ <attr name="gain" type="u8" val="1"/>
+ <attr name="offset" type="u16" val="2100"/>
+ <attr name="channel_id" type="u8" val="0"/>
+ <attr name="stream_id" type="s8" val="-1"/>
+</obj>
+
+<obj class="DaphneV2LNA" id="daphne-v2-default-lna">
+ <attr name="integrator_disable" type="bool" val="1"/>
+ <attr name="gain" type="u8" val="2"/>
+</obj>
+
+<obj class="DaphneV2LNA" id="daphne_mezz-daphne-61-lna-0">
+ <attr name="integrator_disable" type="bool" val="1"/>
+ <attr name="gain" type="u8" val="2"/>
+</obj>
+
+<obj class="DaphneV2PGA" id="daphne-v2-default-pga">
+ <attr name="lpf_cut_frequency" type="u8" val="4"/>
+ <attr name="integrator_disable" type="bool" val="1"/>
+ <attr name="gain" type="bool" val="0"/>
+</obj>
+
+<obj class="DaphneV2PGA" id="daphne_mezz-daphne-61-pga-0">
+ <attr name="lpf_cut_frequency" type="u8" val="4"/>
+ <attr name="integrator_disable" type="bool" val="1"/>
+ <attr name="gain" type="bool" val="0"/>
+</obj>
+
+<obj class="Service" id="test-daphne-app_control">
+ <attr name="protocol" type="string" val="rest"/>
+ <attr name="port" type="u16" val="0"/>
+</obj>
+
+<obj class="SourceIDConf" id="tp-srcid-70">
+ <attr name="sid" type="u32" val="70"/>
+ <attr name="subsystem" type="enum" val="Trigger"/>
+</obj>
+
+</oks-data>
