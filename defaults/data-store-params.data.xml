@@ -75,7 +75,7 @@
 
 <obj class="DataStoreConf" id="default">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/ssddata2"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -86,7 +86,7 @@
 
 <obj class="DataStoreConf" id="default_tp_store_conf">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data3"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -97,7 +97,7 @@
 
 <obj class="DataStoreConf" id="default_tp_store_conf-test">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data3/test"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -108,7 +108,7 @@
 
 <obj class="DataStoreConf" id="testing-datastore">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data3/test"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -119,7 +119,7 @@
 
 <obj class="DataStoreConf" id="tr-data0">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data0"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -130,7 +130,7 @@
 
 <obj class="DataStoreConf" id="tr-data0-test">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data0/test"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -141,7 +141,7 @@
 
 <obj class="DataStoreConf" id="tr-data1">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data1"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -152,7 +152,7 @@
 
 <obj class="DataStoreConf" id="tr-data1-test">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data1/test"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -163,7 +163,7 @@
 
 <obj class="DataStoreConf" id="tr-data2">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data2"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -174,7 +174,7 @@
 
 <obj class="DataStoreConf" id="tr-data2-test">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data2/test"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -185,7 +185,7 @@
 
 <obj class="DataStoreConf" id="tr-data3">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data3"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -196,7 +196,7 @@
 
 <obj class="DataStoreConf" id="tr-data3-test">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data3/test"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -207,7 +207,7 @@
 
 <obj class="DataStoreConf" id="tr-data4">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data4"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -218,7 +218,7 @@
 
 <obj class="DataStoreConf" id="tr-data4-test">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data4/test"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -229,7 +229,7 @@
 
 <obj class="DataStoreConf" id="tr-data5">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data5"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -240,7 +240,7 @@
 
 <obj class="DataStoreConf" id="tr-data5-test">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="/data5/test"/>
+ <attr name="directory_path" type="string" val="data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>

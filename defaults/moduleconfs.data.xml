@@ -70,6 +70,7 @@
  <file path="schema/appmodel/application.schema.xml"/>
  <file path="schema/appmodel/trigger.schema.xml"/>
  <file path="schema/appmodel/fdmodules.schema.xml"/>
+ <file path="schema/appmodel/ndmodules.schema.xml"/>
  <file path="schema/appmodel/tde.schema.xml"/>
  <file path="defaults/connections.data.xml"/>
  <file path="defaults/data-store-params.data.xml"/>
@@ -279,6 +280,19 @@
 </obj>
 
 
+
+<obj class="DataHandlerConf" id="def-link-handler">
+ <attr name="template_for" type="class" val="NDDataHandlerModule"/>
+ <attr name="input_data_type" type="string" val="PACMANFrame"/>
+ <attr name="generate_timesync" type="bool" val="1"/>
+ <attr name="post_processing_delay_min_wait" type="u64" val="1"/>
+ <attr name="post_processing_delay_max_wait" type="u64" val="5"/>
+ <rel name="request_handler" class="RequestHandler" id="def-data-request-handler"/>
+ <rel name="latency_buffer" class="LatencyBuffer" id="pacman-latency-buf"/>
+ <rel name="data_processor" class="DataProcessor" id="null-data-processor"/>
+</obj>
+
+
 <obj class="DataHandlerConf" id="pds-eth-handler-numa0-selftrigger">
  <attr name="template_for" type="class" val="FDDataHandlerModule"/>
  <attr name="input_data_type" type="string" val="DAPHNEEthFrame"/>
@@ -396,6 +410,14 @@
 <obj class="LatencyBuffer" id="tpc-latency-buf-numa0">
  <attr name="size" type="u32" val="244096"/>
  <attr name="numa_aware" type="bool" val="1"/>
+ <attr name="intrinsic_allocator" type="bool" val="0"/>
+ <attr name="alignment_size" type="u32" val="4096"/>
+ <attr name="preallocation" type="bool" val="1"/>
+</obj>
+
+<obj class="LatencyBuffer" id="pacman-latency-buf">
+ <attr name="size" type="u32" val="244096"/>
+ <attr name="numa_aware" type="bool" val="0"/>
  <attr name="intrinsic_allocator" type="bool" val="0"/>
  <attr name="alignment_size" type="u32" val="4096"/>
  <attr name="preallocation" type="bool" val="1"/>

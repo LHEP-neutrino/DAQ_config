@@ -112,9 +112,9 @@
 </obj>
 
 <obj class="NetworkInterface" id="nw-ndlar-daphne-01-10g">
- <attr name="mac_address" type="string" val="96:76:92:99:BF:37"/>
+ <attr name="mac_address" type="string" val="50:7c:6f:88:a8:1f"/>
  <attr name="ip_address" type="string">
-  <data val="130.92.128.147"/>
+	 <data val="10.200.0.128"/>
  </attr>
  <attr name="network_name" type="enum" val="Data"/>
 </obj>

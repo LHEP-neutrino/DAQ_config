@@ -120,7 +120,7 @@
 <obj class="FSMaction" id="elisa-logbook">
  <attr name="name" type="string" val="elisa-logbook"/>
  <rel name="parameters">
-  <ref class="Variable" id="np02-logbook"/>
+  <ref class="Variable" id="local-logbook"/>
  </rel>
 </obj>
 
@@ -139,6 +139,10 @@
 
 <obj class="FSMaction" id="usvc-provided-run-number">
  <attr name="name" type="string" val="usvc-provided-run-number"/>
+</obj>
+
+<obj class="FSMaction" id="user-provided-run-number">
+  <attr name="name" type="string" val="user-provided-run-number"/>
 </obj>
 
 <obj class="FSMconfiguration" id="FSMconfiguration_noAction">
@@ -170,7 +174,7 @@
  </rel>
 </obj>
 
-<obj class="FSMconfiguration" id="fsm-ehn1">
+<obj class="FSMconfiguration" id="fsm-ndlar">
  <attr name="states" type="string">
   <data val="initial"/>
   <data val="configured"/>
@@ -208,10 +212,9 @@
   <ref class="FSMxTransition" id="post_drain_dataflow_prod"/>
  </rel>
  <rel name="actions">
-  <ref class="FSMaction" id="usvc-provided-run-number"/>
+  <ref class="FSMaction" id="user-provided-run-number"/>
   <ref class="FSMaction" id="trigger-rate-specifier"/>
   <ref class="FSMaction" id="elisa-logbook"/>
-  <ref class="FSMaction" id="db-run-registry"/>
   <ref class="FSMaction" id="thread-pinning"/>
  </rel>
 </obj>
@@ -300,7 +303,6 @@
 <obj class="FSMxTransition" id="post_drain_dataflow_prod">
  <attr name="transition" type="string" val="drain_dataflow"/>
  <attr name="order" type="string">
-  <data val="db-run-registry"/>
   <data val="elisa-logbook"/>
  </attr>
 </obj>
@@ -340,12 +342,10 @@
 <obj class="FSMxTransition" id="pre_start_prod">
  <attr name="transition" type="string" val="start"/>
  <attr name="order" type="string">
-  <data val="usvc-provided-run-number"/>
-  <data val="db-run-registry"/>
+  <data val="user-provided-run-number"/>
  </attr>
  <attr name="mandatory" type="string">
-  <data val="usvc-provided-run-number"/>
-  <data val="db-run-registry"/>
+  <data val="user-provided-run-number"/>
  </attr>
 </obj>
 
@@ -362,6 +362,11 @@
 <obj class="Variable" id="np04-logbook">
  <attr name="name" type="string" val="DUNEDAQ_ELISA_LOGBOOK_APPARATUS"/>
  <attr name="value" type="string" val="pdsp"/>
+</obj>
+
+<obj class="Variable" id="local-logbook"/>
+  <attr name="name" type="string" val="file_name"/>
+  <attr name="value" type="string" val="logbook.txt"/>
 </obj>
 
 <obj class="Variable" id="thread-pinning-file-post-conf">

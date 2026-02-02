@@ -117,7 +117,7 @@
 <obj class="NetworkDevice" id="nic-argoncube54-numa0-0">
  <attr name="mac_address" type="string" val="50:7c:6f:88:a8:1e"/>
  <attr name="ip_address" type="string">
-  <data val="130.92.128.152"/>
+  <data val="10.200.0.1"/>
  </attr>
  <attr name="network_name" type="enum" val="Control"/>
  <attr name="pcie_addr" type="string" val="0000:51:00.0"/>
@@ -126,7 +126,7 @@
 <obj class="NetworkDevice" id="nic-argoncube54-numa0-1">
  <attr name="mac_address" type="string" val="50:7c:6f:88:a8:1f"/>
  <attr name="ip_address" type="string">
-  <data val="130.92.128.152"/>
+  <data val="130.92.128.147"/>
  </attr>
  <attr name="network_name" type="enum" val="Control"/>
  <attr name="pcie_addr" type="string" val="0000:51:00.1"/>

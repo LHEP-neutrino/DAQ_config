@@ -79,7 +79,7 @@
  <file path="hw/hosts.data.xml"/>
  <file path="segments/dataflow.data.xml"/>
  <file path="segments/trigger.data.xml"/>
- <file path="segments/ndlar-pds.data.xml"/>
+ <file path="segments/ndlar-pacman.data.xml"/>
 </include>
 
 <comments>
@@ -97,7 +97,7 @@
  <rel name="segments">
   <ref class="Segment" id="df-segment"/>
   <ref class="Segment" id="trg-segment"/>
-  <ref class="Segment" id="pds-segment"/>
+  <ref class="Segment" id="pacman-segment"/>
  </rel>
  <rel name="controller" class="RCApplication" id="root-controller"/>
 </obj>
@@ -107,13 +107,16 @@
  <attr name="data_rate_slowdown_factor" type="u32" val="1"/>
  <attr name="controller_log_level" type="enum" val="INFO"/>
  <attr name="log_path" type="string" val="/home/lhep/fddaq-v5.5.0-rc3-a9/running-area"/>
- <rel name="connectivity_service" class="ConnectivityService" id="ndlar-connectivity-service-config"/>
+ <rel name="connectivity_service" class="ConnectivityService" id="local-connectivity-service-config"/>
  <rel name="environment">
-  <ref class="VariableSet" id="ndlar-variables"/>
+  <ref class="VariableSet" id="local-variables"/>
  </rel>
  <rel name="segment" class="Segment" id="root-segment"/>
+ <rel name="infrastructure_applications">
+  <ref class="ConnectionService" id="local-connection-server"/>
+ </rel>
  <rel name="detector_configuration" class="DetectorConfig" id="ndlar-detector"/>
- <rel name="opmon_uri" class="OpMonURI" id="ndlar-opmon-uri"/>
+ <rel name="opmon_uri" class="OpMonURI" id="local-opmon-uri"/>
 </obj>
 
 </oks-data>
