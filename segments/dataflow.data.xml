@@ -166,7 +166,6 @@
 <obj class="Segment" id="df-segment">
  <rel name="applications">
   <ref class="DFOApplication" id="dfo-01"/>
-  <ref class="TPStreamWriterApplication" id="tp-stream-writer"/>
   <ref class="DFApplication" id="df-s01-d0"/>
  </rel>
  <rel name="controller" class="RCApplication" id="df-controller"/>
