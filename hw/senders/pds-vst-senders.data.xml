@@ -106,7 +106,7 @@
  <attr name="control_host" type="string" val="ndlar-daphne-01"/>
  <rel name="streams">
   <ref class="DetectorStream" id="ndlar-pds01-s00-sid800"/>
-  <ref class="DetectorStream" id="ndlar-pds01-s00-sid801"/>
+  <!-- <ref class="DetectorStream" id="ndlar-pds01-s00-sid801"/> -->
  </rel>
  <rel name="uses" class="NetworkInterface" id="nw-ndlar-daphne-01-10g"/>
 </obj>
