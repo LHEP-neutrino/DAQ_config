@@ -367,7 +367,7 @@
 </obj>
 
 <obj class="LatencyBuffer" id="pds-latency-buf-numa0">
- <attr name="size" type="u32" val="1200000"/>
+ <attr name="size" type="u32" val="61056"/>
  <attr name="numa_aware" type="bool" val="0"/>
  <attr name="intrinsic_allocator" type="bool" val="0"/>
  <attr name="alignment_size" type="u32" val="4096"/>
@@ -376,7 +376,7 @@
 
 <obj class="LatencyBuffer" id="pds-latency-buf-numa1">
  <attr name="size" type="u32" val="1200000"/>
- <attr name="numa_aware" type="bool" val="0"/>
+ <attr name="numa_aware" type="bool" val="1"/>
  <attr name="numa_node" type="s16" val="1"/>
  <attr name="intrinsic_allocator" type="bool" val="0"/>
  <attr name="alignment_size" type="u32" val="4096"/>
