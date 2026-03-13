@@ -88,14 +88,14 @@
 </obj>
 
 <obj class="GeoId" id="ndlar-pds01-s00">
- <attr name="detector_id" type="u32" val="8"/>
+ <attr name="detector_id" type="u32" val="33"/>
  <attr name="crate_id" type="u32" val="0"/>
  <attr name="slot_id" type="u32" val="0"/>
  <attr name="stream_id" type="u32" val="0"/>
 </obj>
 
 <obj class="GeoId" id="ndlar-pds01-s01">
- <attr name="detector_id" type="u32" val="8"/>
+ <attr name="detector_id" type="u32" val="33"/>
  <attr name="crate_id" type="u32" val="0"/>
  <attr name="slot_id" type="u32" val="0"/>
  <attr name="stream_id" type="u32" val="1"/>
@@ -106,7 +106,7 @@
  <attr name="control_host" type="string" val="ndlar-daphne-01"/>
  <rel name="streams">
   <ref class="DetectorStream" id="ndlar-pds01-s00-sid800"/>
-  <!-- <ref class="DetectorStream" id="ndlar-pds01-s00-sid801"/> -->
+  <ref class="DetectorStream" id="ndlar-pds01-s00-sid801"/>
  </rel>
  <rel name="uses" class="NetworkInterface" id="nw-ndlar-daphne-01-10g"/>
 </obj>
