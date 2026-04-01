@@ -77,13 +77,13 @@
 </comments>
 
 
-<obj class="DetectorStream" id="ndlar-pds01-s00-sid800">
- <attr name="source_id" type="u32" val="800"/>
+<obj class="DetectorStream" id="ndlar-pds01-s00-sid3300">
+ <attr name="source_id" type="u32" val="3300"/>
  <rel name="geo_id" class="GeoId" id="ndlar-pds01-s00"/>
 </obj>
 
-<obj class="DetectorStream" id="ndlar-pds01-s00-sid801">
- <attr name="source_id" type="u32" val="801"/>
+<obj class="DetectorStream" id="ndlar-pds01-s00-sid3301">
+ <attr name="source_id" type="u32" val="3301"/>
  <rel name="geo_id" class="GeoId" id="ndlar-pds01-s01"/>
 </obj>
 
@@ -105,8 +105,8 @@
  <attr name="port" type="u32" val="17476"/>
  <attr name="control_host" type="string" val="ndlar-daphne-01"/>
  <rel name="streams">
-  <ref class="DetectorStream" id="ndlar-pds01-s00-sid800"/>
-  <ref class="DetectorStream" id="ndlar-pds01-s00-sid801"/>
+  <ref class="DetectorStream" id="ndlar-pds01-s00-sid3300"/>
+  <ref class="DetectorStream" id="ndlar-pds01-s00-sid3301"/>
  </rel>
  <rel name="uses" class="NetworkInterface" id="nw-ndlar-daphne-01-10g"/>
 </obj>
@@ -114,7 +114,7 @@
 <obj class="NetworkInterface" id="nw-ndlar-daphne-01-10g">
  <attr name="mac_address" type="string" val="50:7c:6f:88:a8:1f"/>
  <attr name="ip_address" type="string">
-	 <data val="10.200.0.128"/>
+  <data val="10.200.0.128"/>
  </attr>
  <attr name="network_name" type="enum" val="Data"/>
 </obj>
@@ -122,7 +122,7 @@
 <obj class="NetworkInterface" id="nw-ndlar-daphne-01-1g">
  <attr name="mac_address" type="string" val="96:76:92:99:BF:37"/>
  <attr name="ip_address" type="string">
-  <data val="130.92.128.147"/>
+  <data val="130.92.128.154"/>
  </attr>
  <attr name="network_name" type="enum" val="Control"/>
 </obj>

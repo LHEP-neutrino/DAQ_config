@@ -109,10 +109,12 @@
  <rel name="configuration" class="DPDKPortConfiguration" id="dpdk-argoncube54-numa0-conf-0"/>
 </obj>
 
+<!-- FIXME
 <obj class="DPDKReceiver" id="dpdk-argoncube54-receiver-1">
  <rel name="uses" class="NetworkDevice" id="nic-argoncube54-numa0-1"/>
  <rel name="configuration" class="DPDKPortConfiguration" id="dpdk-argoncube54-numa0-conf-1"/>
 </obj>
+-->
 
 <obj class="NetworkDevice" id="nic-argoncube54-numa0-0">
  <attr name="mac_address" type="string" val="50:7c:6f:88:a8:1e"/>
@@ -123,14 +125,16 @@
  <attr name="pcie_addr" type="string" val="0000:51:00.0"/>
 </obj>
 
+<!-- FIXME
 <obj class="NetworkDevice" id="nic-argoncube54-numa0-1">
  <attr name="mac_address" type="string" val="50:7c:6f:88:a8:1f"/>
  <attr name="ip_address" type="string">
-  <data val="130.92.128.147"/>
+  <data val="10.200.0.1"/>
  </attr>
  <attr name="network_name" type="enum" val="Control"/>
  <attr name="pcie_addr" type="string" val="0000:51:00.1"/>
 </obj>
+-->
 
 <obj class="ProcessingResource" id="lcores-argoncube54-numa0-0">
  <attr name="numa_id" type="u8" val="0"/>

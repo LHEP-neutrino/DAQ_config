@@ -63,19 +63,16 @@
 
 <oks-data>
 
-<info name="" type="" num-of-items="26" oks-format="data" oks-version="862f2957270" created-by="eflumerf" created-on="ironvirt9.mshome.net" creation-time="20240112T161946" last-modified-by="maroda" last-modified-on="np04-srv-015.cern.ch" last-modification-time="20250409T105648"/>
+<info name="" type="" num-of-items="24" oks-format="data" oks-version="862f2957270" created-by="eflumerf" created-on="ironvirt9.mshome.net" creation-time="20240112T161946" last-modified-by="lhep" last-modified-on="argoncube54.aec.unibe.ch" last-modification-time="20260401T152226"/>
 
 <include>
  <file path="schema/appmodel/application.schema.xml"/>
 </include>
 
-<comments>
-</comments>
-
 
 <obj class="DataStoreConf" id="default">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="data/"/>
+ <attr name="directory_path" type="string" val="/mnt/data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>
@@ -108,7 +105,7 @@
 
 <obj class="DataStoreConf" id="testing-datastore">
  <attr name="type" type="string" val="HDF5DataStore"/>
- <attr name="directory_path" type="string" val="data/"/>
+ <attr name="directory_path" type="string" val="/mnt/data/"/>
  <attr name="mode" type="enum" val="all-per-file"/>
  <attr name="max_file_size" type="u64" val="4294967296"/>
  <attr name="disable_unique_filename_suffix" type="bool" val="0"/>

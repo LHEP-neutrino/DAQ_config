@@ -63,7 +63,7 @@
 
 <oks-data>
 
-<info name="" type="" num-of-items="35" oks-format="data" oks-version="862f2957270" created-by="gjc" created-on="thinkpad" creation-time="20231207T105615" last-modified-by="maroda" last-modified-on="np04-srv-015.cern.ch" last-modification-time="20250901T144851"/>
+<info name="" type="" num-of-items="77" oks-format="data" oks-version="862f2957270" created-by="gjc" created-on="thinkpad" creation-time="20231207T105615" last-modified-by="lhep" last-modified-on="argoncube54.aec.unibe.ch" last-modification-time="20260401T152107"/>
 
 <include>
  <file path="schema/appmodel/PDS.schema.xml"/>
@@ -79,6 +79,11 @@
 </include>
 
 <comments>
+ <comment creation-time="20260311T124243" created-by="lhep" created-on="argoncube54.aec.unibe.ch" author="lhep" text="vbais 1400"/>
+ <comment creation-time="20260311T130839" created-by="lhep" created-on="argoncube54.aec.unibe.ch" author="lhep" text="vbias 1115"/>
+ <comment creation-time="20260313T123142" created-by="lhep" created-on="argoncube54.aec.unibe.ch" author="lhep" text="Threshold 8500"/>
+ <comment creation-time="20260323T130639" created-by="lhep" created-on="argoncube54.aec.unibe.ch" author="lhep" text="threshold20, bias AFE3 1450"/>
+ <comment creation-time="20260323T143738" created-by="lhep" created-on="argoncube54.aec.unibe.ch" author="lhep" text="vbias AFE 3 1200"/>
 </comments>
 
 
@@ -99,82 +104,6 @@
  <rel name="hermes_module_conf" class="HermesModuleConf" id="def-hermes-conf"/>
 </obj>
 
-<obj class="RCApplication" id="pds-controller">
- <attr name="application_name" type="string" val="drunc-controller"/>
- <rel name="runs_on" class="VirtualHost" id="vh-argoncube-054"/>
- <rel name="exposes_service">
-  <ref class="Service" id="pds-controller_control"/>
- </rel>
- <rel name="opmon_conf" class="OpMonConf" id="slow-all-monitoring"/>
- <rel name="fsm" class="FSMconfiguration" id="FSMconfiguration_noAction"/>
-</obj>
-
-<obj class="ReadoutApplication" id="rundlarsrv054">
- <attr name="application_name" type="string" val="daq_application"/>
- <attr name="tp_generation_enabled" type="bool" val="0"/>
- <attr name="ta_generation_enabled" type="bool" val="0"/>
- <rel name="runs_on" class="VirtualHost" id="vh-argoncube-054"/>
- <rel name="exposes_service">
-  <ref class="Service" id="rundlarsrv054_control"/>
- </rel>
- <rel name="opmon_conf" class="OpMonConf" id="slow-all-monitoring"/>
- <rel name="queue_rules">
-  <ref class="QueueConnectionRule" id="nd-dlh-data-requests-queue-rule"/>
-  <ref class="QueueConnectionRule" id="fa-queue-rule"/>
-  <ref class="QueueConnectionRule" id="tp-queue-rule"/>
-  <ref class="QueueConnectionRule" id="daphne-eth-callback-raw-data-rule"/>
- </rel>
- <rel name="network_rules">
-  <ref class="NetworkConnectionRule" id="ts-net-rule"/>
-  <ref class="NetworkConnectionRule" id="data-req-readout-net-rule"/>
-  <ref class="NetworkConnectionRule" id="tpset-net-rule"/>
-  <ref class="NetworkConnectionRule" id="ta-net-rule"/>
- </rel>
- <rel name="action_plans">
-  <ref class="ActionPlan" id="readout-start"/>
-  <ref class="ActionPlan" id="readout-stop"/>
- </rel>
- <rel name="tp_source_ids">
-  <ref class="SourceIDConf" id="tp-srcid-01"/>
- </rel>
- <rel name="uses" class="RoHwConfig" id="generic-dpdk-hw-cfg"/>
- <rel name="link_handler" class="DataHandlerConf" id="pds-eth-handler-numa0-selftrigger"/>
- <rel name="tp_handler" class="DataHandlerConf" id="def-pds-tp-handler"/>
- <rel name="data_reader" class="DPDKReaderConf" id="def-nic-receiver-conf"/>
- <rel name="fragment_aggregator" class="FragmentAggregatorConf" id="frag-agg-01"/>
- <rel name="detector_connections">
-  <ref class="NetworkDetectorToDaqConnection" id="daphne01-connection"/>
- </rel>
-</obj>
-
-<obj class="Segment" id="pds-segment">
- <rel name="applications">
-  <ref class="ReadoutApplication" id="rundlarsrv054"/>
-  <ref class="DaphneApplication" id="ndlar-daphne-app"/>
- </rel>
- <rel name="controller" class="RCApplication" id="pds-controller"/>
-</obj>
-
-<obj class="Service" id="rundlarsrv054_control">
- <attr name="protocol" type="string" val="rest"/>
- <attr name="port" type="u16" val="0"/>
-</obj>
-
-<obj class="Service" id="selftrigger-pds-controller_control">
- <attr name="protocol" type="string" val="rest"/>
- <attr name="port" type="u16" val="0"/>
-</obj>
-
-<obj class="Service" id="ndlar-daphne-app_control">
- <attr name="protocol" type="string" val="rest"/>
- <attr name="port" type="u16" val="0"/>
-</obj>
-
-<obj class="SourceIDConf" id="tp-srcid-01">
- <attr name="sid" type="u32" val="01"/>
- <attr name="subsystem" type="enum" val="Trigger"/>
-</obj>
-
 <obj class="DaphneConf" id="ndlar_daphne_selftrigger">
  <attr name="timeout_ms" type="u16" val="5000"/>
  <attr name="time_reset" type="bool" val="1"/>
@@ -185,46 +114,15 @@
  <rel name="default_v3_settings" class="DaphneV2BoardConf" id="daphne-default-board"/>
 </obj>
 
-<obj class="DaphneV2BoardConf" id="daphne-default-board">
- <rel name="default_channel" class="DaphneV2Channel" id="daphne-default-channel"/>
- <rel name="default_afe" class="DaphneV2AFE" id="daphne-default-afe"/>
-</obj>
-
-<obj class="DaphneV2Channel" id="daphne-default-channel">
- <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2200"/>
- <attr name="channel_id" type="u8" val="100"/>
- <attr name="stream_id" type="s8" val="-1"/>
+<obj class="DaphneMapEntry" id="daphne_mezz-daphne-01-conf">
+ <attr name="key" type="string" val="33.0.0"/>
+ <rel name="conf" class="DaphneV2BoardConf" id="daphne_mezz-daphne-01-conf"/>
 </obj>
 
 <obj class="DaphneV2ADC" id="daphne-default-adc">
  <attr name="low_resolution" type="bool" val="0"/>
  <attr name="output_offset_binary" type="bool" val="1"/>
  <attr name="MSB_first" type="bool" val="1"/>
-</obj>
-
-<obj class="DaphneV2PGA" id="daphne-default-pga">
- <attr name="lpf_cut_frequency" type="u8" val="4"/>
- <attr name="integrator_disable" type="bool" val="1"/>
- <attr name="gain" type="bool" val="0"/>
-</obj>
-
-<obj class="DaphneV2LNA" id="daphne-default-lna">
- <attr name="integrator_disable" type="bool" val="1"/>
- <attr name="gain" type="u8" val="2"/>
-</obj>
-
-<obj class="DaphneV2AFE" id="daphne-default-afe">
- <attr name="afe_id" type="u8" val="100"/>
- <attr name="attenuator" type="u16" val="2666"/>
- <rel name="adc" class="DaphneV2ADC" id="daphne-default-adc"/>
- <rel name="pga" class="DaphneV2PGA" id="daphne-default-pga"/>
- <rel name="lna" class="DaphneV2LNA" id="daphne-default-lna"/>
-</obj>
-
-<obj class="DaphneMapEntry" id="daphne_mezz-daphne-01-conf">
- <attr name="key" type="string" val="8.0.0"/>
- <rel name="conf" class="DaphneV2BoardConf" id="daphne_mezz-daphne-01-conf"/>
 </obj>
 
 <obj class="DaphneV2ADC" id="daphne_mezz-daphne-01-adc-0">
@@ -257,9 +155,17 @@
  <attr name="MSB_first" type="bool" val="0"/>
 </obj>
 
+<obj class="DaphneV2AFE" id="daphne-default-afe">
+ <attr name="afe_id" type="u8" val="100"/>
+ <attr name="attenuator" type="u16" val="2666"/>
+ <rel name="adc" class="DaphneV2ADC" id="daphne-default-adc"/>
+ <rel name="pga" class="DaphneV2PGA" id="daphne-default-pga"/>
+ <rel name="lna" class="DaphneV2LNA" id="daphne-default-lna"/>
+</obj>
+
 <obj class="DaphneV2AFE" id="daphne_mezz-daphne-01-afe-0">
  <attr name="afe_id" type="u8" val="0"/>
- <attr name="attenuator" type="u16" val="2999"/>
+ <attr name="attenuator" type="u16" val="2000"/>
  <rel name="adc" class="DaphneV2ADC" id="daphne_mezz-daphne-01-adc-0"/>
  <rel name="pga" class="DaphneV2PGA" id="daphne_mezz-daphne-01-pga-0"/>
  <rel name="lna" class="DaphneV2LNA" id="daphne_mezz-daphne-01-lna-0"/>
@@ -267,7 +173,7 @@
 
 <obj class="DaphneV2AFE" id="daphne_mezz-daphne-01-afe-1">
  <attr name="afe_id" type="u8" val="1"/>
- <attr name="attenuator" type="u16" val="2080"/>
+ <attr name="attenuator" type="u16" val="2000"/>
  <rel name="adc" class="DaphneV2ADC" id="daphne_mezz-daphne-01-adc-1"/>
  <rel name="pga" class="DaphneV2PGA" id="daphne_mezz-daphne-01-pga-1"/>
  <rel name="lna" class="DaphneV2LNA" id="daphne_mezz-daphne-01-lna-1"/>
@@ -275,8 +181,7 @@
 
 <obj class="DaphneV2AFE" id="daphne_mezz-daphne-01-afe-2">
  <attr name="afe_id" type="u8" val="2"/>
- <attr name="attenuator" type="u16" val="2226"/>
- <attr name="v_bias" type="u16" val="1115"/>
+ <attr name="attenuator" type="u16" val="2000"/>
  <rel name="adc" class="DaphneV2ADC" id="daphne_mezz-daphne-01-adc-2"/>
  <rel name="pga" class="DaphneV2PGA" id="daphne_mezz-daphne-01-pga-2"/>
  <rel name="lna" class="DaphneV2LNA" id="daphne_mezz-daphne-01-lna-2"/>
@@ -284,8 +189,8 @@
 
 <obj class="DaphneV2AFE" id="daphne_mezz-daphne-01-afe-3">
  <attr name="afe_id" type="u8" val="3"/>
- <attr name="attenuator" type="u16" val="1778"/>
- <attr name="v_bias" type="u16" val="800"/>
+ <attr name="attenuator" type="u16" val="2000"/>
+ <attr name="v_bias" type="u16" val="1450"/>
  <rel name="adc" class="DaphneV2ADC" id="daphne_mezz-daphne-01-adc-3"/>
  <rel name="pga" class="DaphneV2PGA" id="daphne_mezz-daphne-01-pga-3"/>
  <rel name="lna" class="DaphneV2LNA" id="daphne_mezz-daphne-01-lna-3"/>
@@ -293,21 +198,24 @@
 
 <obj class="DaphneV2AFE" id="daphne_mezz-daphne-01-afe-4">
  <attr name="afe_id" type="u8" val="4"/>
- <attr name="attenuator" type="u16" val="2999"/>
+ <attr name="attenuator" type="u16" val="2000"/>
  <rel name="adc" class="DaphneV2ADC" id="daphne_mezz-daphne-01-adc-4"/>
  <rel name="pga" class="DaphneV2PGA" id="daphne_mezz-daphne-01-pga-4"/>
  <rel name="lna" class="DaphneV2LNA" id="daphne_mezz-daphne-01-lna-4"/>
 </obj>
 
+<obj class="DaphneV2BoardConf" id="daphne-default-board">
+ <rel name="default_channel" class="DaphneV2Channel" id="daphne-default-channel"/>
+ <rel name="default_afe" class="DaphneV2AFE" id="daphne-default-afe"/>
+</obj>
+
 <obj class="DaphneV2BoardConf" id="daphne_mezz-daphne-01-conf">
  <attr name="bias_ctrl" type="u16" val="4095"/>
- <attr name="self_trigger_threshold" type="u64" val="20"/>
+ <attr name="self_trigger_threshold" type="u64" val="200"/>
  <attr name="self_trigger_xcorr" type="u64" val="4160749570000"/>
  <attr name="tp_conf" type="u32" val="17881857"/>
  <attr name="address" type="string" val="130.92.128.154"/>
- <attr name="slot_id" type="u16" val="0"/>
- <attr name="crate_id" type="u16" val="0"/>
- <attr name="detector_id" type="u16" val="8"/>
+ <attr name="detector_id" type="u16" val="33"/>
  <rel name="active_channels">
   <ref class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-0"/>
   <ref class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-1"/>
@@ -361,6 +269,13 @@
  <rel name="default_afe" class="DaphneV2AFE" id="daphne-default-afe"/>
 </obj>
 
+<obj class="DaphneV2Channel" id="daphne-default-channel">
+ <attr name="gain" type="u8" val="1"/>
+ <attr name="offset" type="u16" val="2200"/>
+ <attr name="channel_id" type="u8" val="100"/>
+ <attr name="stream_id" type="s8" val="-1"/>
+</obj>
+
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-0">
  <attr name="gain" type="u8" val="1"/>
  <attr name="offset" type="u16" val="2275"/>
@@ -377,70 +292,70 @@
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-10">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2025"/>
  <attr name="channel_id" type="u8" val="10"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-11">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2012"/>
  <attr name="channel_id" type="u8" val="11"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-12">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2016"/>
  <attr name="channel_id" type="u8" val="12"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-13">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2036"/>
  <attr name="channel_id" type="u8" val="13"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-14">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2000"/>
  <attr name="channel_id" type="u8" val="14"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-15">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2000"/>
  <attr name="channel_id" type="u8" val="15"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-16">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2000"/>
  <attr name="channel_id" type="u8" val="16"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-17">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2000"/>
  <attr name="channel_id" type="u8" val="17"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-18">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2000"/>
  <attr name="channel_id" type="u8" val="18"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-19">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2000"/>
  <attr name="channel_id" type="u8" val="19"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
@@ -454,70 +369,70 @@
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-20">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2000"/>
  <attr name="channel_id" type="u8" val="20"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-21">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2000"/>
  <attr name="channel_id" type="u8" val="21"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-22">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2000"/>
  <attr name="channel_id" type="u8" val="22"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-23">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2000"/>
  <attr name="channel_id" type="u8" val="23"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-24">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="1948"/>
  <attr name="channel_id" type="u8" val="24"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-25">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="1948"/>
  <attr name="channel_id" type="u8" val="25"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-26">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="1949"/>
  <attr name="channel_id" type="u8" val="26"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-27">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="1931"/>
  <attr name="channel_id" type="u8" val="27"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-28">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="1948"/>
  <attr name="channel_id" type="u8" val="28"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-29">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="1899"/>
  <attr name="channel_id" type="u8" val="29"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
@@ -531,14 +446,14 @@
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-30">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2000"/>
  <attr name="channel_id" type="u8" val="30"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-31">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2000"/>
  <attr name="channel_id" type="u8" val="31"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
@@ -629,16 +544,21 @@
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-8">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2017"/>
  <attr name="channel_id" type="u8" val="8"/>
  <attr name="stream_id" type="s8" val="-1"/>
 </obj>
 
 <obj class="DaphneV2Channel" id="daphne_mezz-daphne-01-channel-9">
  <attr name="gain" type="u8" val="1"/>
- <attr name="offset" type="u16" val="2275"/>
+ <attr name="offset" type="u16" val="2016"/>
  <attr name="channel_id" type="u8" val="9"/>
  <attr name="stream_id" type="s8" val="-1"/>
+</obj>
+
+<obj class="DaphneV2LNA" id="daphne-default-lna">
+ <attr name="integrator_disable" type="bool" val="1"/>
+ <attr name="gain" type="u8" val="2"/>
 </obj>
 
 <obj class="DaphneV2LNA" id="daphne_mezz-daphne-01-lna-0">
@@ -664,6 +584,12 @@
 <obj class="DaphneV2LNA" id="daphne_mezz-daphne-01-lna-4">
  <attr name="integrator_disable" type="bool" val="1"/>
  <attr name="gain" type="u8" val="2"/>
+</obj>
+
+<obj class="DaphneV2PGA" id="daphne-default-pga">
+ <attr name="lpf_cut_frequency" type="u8" val="4"/>
+ <attr name="integrator_disable" type="bool" val="1"/>
+ <attr name="gain" type="bool" val="0"/>
 </obj>
 
 <obj class="DaphneV2PGA" id="daphne_mezz-daphne-01-pga-0">
@@ -695,4 +621,81 @@
  <attr name="integrator_disable" type="bool" val="1"/>
  <attr name="gain" type="bool" val="0"/>
 </obj>
+
+<obj class="RCApplication" id="pds-controller">
+ <attr name="application_name" type="string" val="drunc-controller"/>
+ <rel name="runs_on" class="VirtualHost" id="vh-argoncube-054"/>
+ <rel name="exposes_service">
+  <ref class="Service" id="pds-controller_control"/>
+ </rel>
+ <rel name="opmon_conf" class="OpMonConf" id="slow-all-monitoring"/>
+ <rel name="fsm" class="FSMconfiguration" id="FSMconfiguration_noAction"/>
+</obj>
+
+<obj class="ReadoutApplication" id="rundlarsrv054">
+ <attr name="application_name" type="string" val="daq_application"/>
+ <attr name="tp_generation_enabled" type="bool" val="0"/>
+ <attr name="ta_generation_enabled" type="bool" val="0"/>
+ <rel name="runs_on" class="VirtualHost" id="vh-argoncube-054"/>
+ <rel name="exposes_service">
+  <ref class="Service" id="rundlarsrv054_control"/>
+ </rel>
+ <rel name="opmon_conf" class="OpMonConf" id="slow-all-monitoring"/>
+ <rel name="action_plans">
+  <ref class="ActionPlan" id="readout-start"/>
+  <ref class="ActionPlan" id="readout-stop"/>
+ </rel>
+ <rel name="queue_rules">
+  <ref class="QueueConnectionRule" id="nd-dlh-data-requests-queue-rule"/>
+  <ref class="QueueConnectionRule" id="fa-queue-rule"/>
+  <ref class="QueueConnectionRule" id="tp-queue-rule"/>
+  <ref class="QueueConnectionRule" id="daphne-eth-callback-raw-data-rule"/>
+ </rel>
+ <rel name="network_rules">
+  <ref class="NetworkConnectionRule" id="ts-net-rule"/>
+  <ref class="NetworkConnectionRule" id="data-req-readout-net-rule"/>
+  <ref class="NetworkConnectionRule" id="tpset-net-rule"/>
+  <ref class="NetworkConnectionRule" id="ta-net-rule"/>
+ </rel>
+ <rel name="tp_source_ids">
+  <ref class="SourceIDConf" id="tp-srcid-01"/>
+ </rel>
+ <rel name="uses" class="RoHwConfig" id="generic-dpdk-hw-cfg"/>
+ <rel name="link_handler" class="DataHandlerConf" id="pds-eth-handler-numa0-selftrigger"/>
+ <rel name="tp_handler" class="DataHandlerConf" id="def-pds-tp-handler"/>
+ <rel name="data_reader" class="DPDKReaderConf" id="def-nic-receiver-conf"/>
+ <rel name="fragment_aggregator" class="FragmentAggregatorConf" id="frag-agg-01"/>
+ <rel name="detector_connections">
+  <ref class="NetworkDetectorToDaqConnection" id="daphne01-connection"/>
+ </rel>
+</obj>
+
+<obj class="Segment" id="pds-segment">
+ <rel name="applications">
+  <ref class="ReadoutApplication" id="rundlarsrv054"/>
+  <ref class="DaphneApplication" id="ndlar-daphne-app"/>
+ </rel>
+ <rel name="controller" class="RCApplication" id="pds-controller"/>
+</obj>
+
+<obj class="Service" id="ndlar-daphne-app_control">
+ <attr name="protocol" type="string" val="rest"/>
+ <attr name="port" type="u16" val="0"/>
+</obj>
+
+<obj class="Service" id="rundlarsrv054_control">
+ <attr name="protocol" type="string" val="rest"/>
+ <attr name="port" type="u16" val="0"/>
+</obj>
+
+<obj class="Service" id="selftrigger-pds-controller_control">
+ <attr name="protocol" type="string" val="rest"/>
+ <attr name="port" type="u16" val="0"/>
+</obj>
+
+<obj class="SourceIDConf" id="tp-srcid-01">
+ <attr name="sid" type="u32" val="1"/>
+ <attr name="subsystem" type="enum" val="Trigger"/>
+</obj>
+
 </oks-data>
